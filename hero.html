@@ -46,21 +46,21 @@ body{
 }
 
 .overlay{
-  position:absolute;
-  inset:0;
-  z-index:1;
-  background:
-    linear-gradient(
-      90deg,
-      rgba(0,0,0,.88),
-      rgba(0,0,0,.45),
-      rgba(0,0,0,.08)
-    ),
-    linear-gradient(
-      0deg,
-      rgba(0,0,0,.95),
-      transparent 60%
-    );
+  position:absolute;
+  inset:0;
+  z-index:1;
+  background:
+    linear-gradient(
+      90deg,
+      rgba(0,0,0,.55),
+      rgba(0,0,0,.25),
+      rgba(0,0,0,.05)
+    ),
+    linear-gradient(
+      0deg,
+      rgba(0,0,0,.65),
+      transparent 70%
+    );
 }
 
 .top{
@@ -333,15 +333,21 @@ const heroBg = document.getElementById("heroBg");
 
 if (hero.image) {
 
-  heroBg.style.backgroundImage =
-    `url("${hero.image}")`;
+  const imageUrl = "./" + hero.image;
+
+  heroBg.style.backgroundImage =
+    `url("${imageUrl}")`;
+
+  heroBg.style.backgroundSize = "cover";
+  heroBg.style.backgroundPosition = "center";
+  heroBg.style.backgroundRepeat = "no-repeat";
 
 } else {
 
-  heroBg.style.backgroundImage =
-    "linear-gradient(135deg,#05070c,#111827,#020305)";
+  heroBg.style.backgroundImage =
+    "linear-gradient(135deg,#05070c,#111827,#020305)";
 
-}
+      }
 
 </script>
 
