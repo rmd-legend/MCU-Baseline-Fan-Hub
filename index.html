@@ -1,46 +1,923 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-
 <meta charset="UTF-8">
-
-<meta name="viewport"
-      content="width=device-width, initial-scale=1.0">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <title>MCU Baseline Fan Hub</title>
 
 <style>
 
 *{
-  margin:0;
-  padding:0;
-  box-sizing:border-box;
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
 }
 
-html,body{
-  width:100%;
-  min-height:100%;
+html,
+body{
+    width:100%;
+    min-height:100%;
 }
 
 body{
-  font-family:Arial,Helvetica,sans-serif;
-  background:#02040a;
-  color:white;
-  overflow-x:hidden;
+    background:#02040a;
+    color:#fff;
+    font-family:Arial,Helvetica,sans-serif;
+    overflow:hidden;
 }
 
 
-/* =========================
-   FRONT PAGE
-========================= */
+/* =================================
+   MAIN FRONT PAGE
+================================= */
 
 .hero{
+    position:relative;
 
-  position:relative;
+    width:100%;
+    height:100vh;
+    height:100svh;
 
-  min-height:100vh;
-  min-height:100svh;
+    display:flex;
+    align-items:center;
+    justify-content:center;
 
-  display:flex;
-  align-items:center;
-  justify-content:center;
+    text-align:center;
+
+    overflow:hidden;
+
+    background:
+        radial-gradient(
+            circle at 50% 50%,
+            rgba(0,200,255,.15),
+            transparent 30%
+        ),
+        radial-gradient(
+            circle at 20% 20%,
+            rgba(30,70,255,.10),
+            transparent 35%
+        ),
+        #02040a;
+}
+
+
+/* =================================
+   MOVING ENERGY
+================================= */
+
+.energy-light{
+    position:absolute;
+
+    width:650px;
+    height:650px;
+
+    border-radius:50%;
+
+    background:
+        radial-gradient(
+            circle,
+            rgba(0,220,255,.22),
+            rgba(0,100,255,.08) 40%,
+            transparent 70%
+        );
+
+    filter:blur(20px);
+
+    animation:energyMove 9s ease-in-out infinite;
+
+    pointer-events:none;
+}
+
+@keyframes energyMove{
+
+    0%{
+        transform:translate(-180px,-80px) scale(.8);
+    }
+
+    50%{
+        transform:translate(180px,80px) scale(1.2);
+    }
+
+    100%{
+        transform:translate(-180px,-80px) scale(.8);
+    }
+
+}
+
+
+/* =================================
+   MAIN ENERGY RING
+================================= */
+
+.main-ring{
+    position:absolute;
+
+    width:430px;
+    height:430px;
+
+    border-radius:50%;
+
+    border:1px solid rgba(0,210,255,.25);
+
+    box-shadow:
+        0 0 35px rgba(0,210,255,.12),
+        inset 0 0 35px rgba(0,210,255,.08);
+
+    animation:ringRotate 18s linear infinite;
+
+    pointer-events:none;
+}
+
+.main-ring::before{
+
+    content:"";
+
+    position:absolute;
+
+    inset:35px;
+
+    border-radius:50%;
+
+    border:1px dashed rgba(255,255,255,.12);
+
+}
+
+.main-ring::after{
+
+    content:"";
+
+    position:absolute;
+
+    inset:85px;
+
+    border-radius:50%;
+
+    border:1px solid rgba(0,210,255,.15);
+
+}
+
+@keyframes ringRotate{
+
+    from{
+        transform:rotate(0deg);
+    }
+
+    to{
+        transform:rotate(360deg);
+    }
+
+}
+
+
+/* =================================
+   LIGHT STREAKS
+================================= */
+
+.streak{
+    position:absolute;
+
+    width:180px;
+    height:2px;
+
+    background:
+        linear-gradient(
+            90deg,
+            transparent,
+            rgba(0,220,255,.8),
+            transparent
+        );
+
+    filter:blur(1px);
+
+    opacity:.5;
+
+    animation:streakMove 4s linear infinite;
+}
+
+.s1{
+    top:25%;
+    left:-200px;
+    animation-delay:0s;
+}
+
+.s2{
+    top:65%;
+    left:-250px;
+    animation-delay:1.5s;
+}
+
+.s3{
+    top:40%;
+    left:-300px;
+    animation-delay:3s;
+}
+
+@keyframes streakMove{
+
+    0%{
+        transform:translateX(0) rotate(-8deg);
+        opacity:0;
+    }
+
+    15%{
+        opacity:.7;
+    }
+
+    70%{
+        opacity:.7;
+    }
+
+    100%{
+        transform:translateX(130vw) rotate(-8deg);
+        opacity:0;
+    }
+
+}
+
+
+/* =================================
+   CONTENT
+================================= */
+
+.content{
+
+    position:relative;
+
+    z-index:10;
+
+    width:100%;
+
+    max-width:950px;
+
+    padding:30px;
+
+}
+
+.badge{
+
+    display:inline-block;
+
+    color:#20d9ff;
+
+    font-size:12px;
+
+    font-weight:bold;
+
+    letter-spacing:5px;
+
+    margin-bottom:25px;
+
+    animation:fadeDown 1s ease;
+}
+
+
+.title{
+
+    font-size:clamp(
+        48px,
+        10vw,
+        105px
+    );
+
+    line-height:.92;
+
+    letter-spacing:5px;
+
+    margin-bottom:25px;
+
+    text-shadow:
+        0 8px 35px rgba(0,0,0,.9);
+
+    animation:titleReveal 1.3s ease;
+
+}
+
+.title span{
+
+    color:#20d9ff;
+
+    text-shadow:
+        0 0 15px rgba(0,220,255,.7),
+        0 0 45px rgba(0,180,255,.35);
+
+}
+
+
+.subtitle{
+
+    max-width:680px;
+
+    margin:0 auto;
+
+    color:#b8c5d3;
+
+    font-size:17px;
+
+    line-height:1.7;
+
+    animation:fadeUp 1.4s ease .25s both;
+
+}
+
+
+/* =================================
+   ENTER BUTTON
+================================= */
+
+.button{
+
+    position:relative;
+
+    display:inline-block;
+
+    margin-top:35px;
+
+    padding:16px 34px;
+
+    border-radius:35px;
+
+    color:#fff;
+
+    text-decoration:none;
+
+    font-size:14px;
+
+    font-weight:bold;
+
+    letter-spacing:1.5px;
+
+    background:
+        linear-gradient(
+            90deg,
+            #087cff,
+            #00d9ff
+        );
+
+    box-shadow:
+        0 0 25px rgba(0,190,255,.35);
+
+    transition:
+        transform .3s ease,
+        box-shadow .3s ease;
+
+    overflow:hidden;
+
+    animation:fadeUp 1.4s ease .5s both;
+
+}
+
+.button::before{
+
+    content:"";
+
+    position:absolute;
+
+    top:0;
+    left:-100%;
+
+    width:100%;
+    height:100%;
+
+    background:
+        linear-gradient(
+            90deg,
+            transparent,
+            rgba(255,255,255,.5),
+            transparent
+        );
+
+    transition:left .6s ease;
+
+}
+
+.button:hover::before{
+    left:100%;
+}
+
+.button:hover{
+
+    transform:
+        translateY(-4px)
+        scale(1.04);
+
+    box-shadow:
+        0 0 45px rgba(0,210,255,.65);
+
+}
+
+
+/* =================================
+   CINEMATIC PAGE TRANSITION
+================================= */
+
+#transition{
+
+    position:fixed;
+
+    inset:0;
+
+    z-index:99999;
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:center;
+
+    pointer-events:none;
+
+    background:
+        radial-gradient(
+            circle,
+            #0bdcff 0%,
+            #063a72 15%,
+            #02040a 42%,
+            #000 100%
+        );
+
+    opacity:0;
+
+    transform:scale(.05);
+
+    border-radius:50%;
+
+    transition:
+        transform 1s cubic-bezier(.75,0,.15,1),
+        opacity .35s ease,
+        border-radius 1s ease;
+
+}
+
+
+/* ACTIVE TRANSITION */
+
+#transition.active{
+
+    opacity:1;
+
+    transform:scale(3);
+
+    border-radius:0;
+
+}
+
+
+/* =================================
+   PORTAL RINGS
+================================= */
+
+.portal{
+
+    position:absolute;
+
+    width:180px;
+    height:180px;
+
+    border-radius:50%;
+
+    border:2px solid rgba(255,255,255,.9);
+
+    box-shadow:
+        0 0 15px #fff,
+        0 0 35px #00d9ff,
+        0 0 80px #008cff,
+        inset 0 0 30px #00bfff;
+
+    animation:
+        portalSpin 1s linear infinite;
+
+}
+
+.portal.two{
+
+    width:270px;
+    height:270px;
+
+    border-color:
+        rgba(0,220,255,.65);
+
+    animation-direction:reverse;
+
+}
+
+.portal.three{
+
+    width:360px;
+    height:360px;
+
+    border-color:
+        rgba(255,255,255,.25);
+
+    animation-duration:1.5s;
+
+}
+
+
+@keyframes portalSpin{
+
+    from{
+        transform:rotate(0deg);
+    }
+
+    to{
+        transform:rotate(360deg);
+    }
+
+}
+
+
+/* =================================
+   CENTER CORE
+================================= */
+
+.portal-core{
+
+    position:absolute;
+
+    width:35px;
+    height:35px;
+
+    border-radius:50%;
+
+    background:#fff;
+
+    box-shadow:
+        0 0 15px #fff,
+        0 0 35px #00eaff,
+        0 0 80px #008cff;
+
+    animation:corePulse .5s infinite alternate;
+
+}
+
+@keyframes corePulse{
+
+    from{
+        transform:scale(.7);
+    }
+
+    to{
+        transform:scale(1.4);
+    }
+
+}
+
+
+/* =================================
+   TRANSITION TEXT
+================================= */
+
+.transition-text{
+
+    position:absolute;
+
+    margin-top:280px;
+
+    color:white;
+
+    font-size:11px;
+
+    font-weight:bold;
+
+    letter-spacing:5px;
+
+    text-shadow:
+        0 0 10px #00eaff,
+        0 0 30px #008cff;
+
+    animation:textPulse .7s infinite alternate;
+
+}
+
+@keyframes textPulse{
+
+    from{
+        opacity:.4;
+    }
+
+    to{
+        opacity:1;
+    }
+
+}
+
+
+/* =================================
+   NORMAL ANIMATIONS
+================================= */
+
+@keyframes titleReveal{
+
+    from{
+        opacity:0;
+
+        transform:
+            translateY(35px)
+            scale(.96);
+
+        filter:blur(8px);
+    }
+
+    to{
+        opacity:1;
+
+        transform:
+            translateY(0)
+            scale(1);
+
+        filter:blur(0);
+    }
+
+}
+
+
+@keyframes fadeUp{
+
+    from{
+        opacity:0;
+
+        transform:translateY(25px);
+    }
+
+    to{
+        opacity:1;
+
+        transform:translateY(0);
+    }
+
+}
+
+
+@keyframes fadeDown{
+
+    from{
+        opacity:0;
+
+        transform:translateY(-20px);
+    }
+
+    to{
+        opacity:1;
+
+        transform:translateY(0);
+    }
+
+}
+
+
+/* =================================
+   MOBILE
+================================= */
+
+@media(max-width:600px){
+
+    .main-ring{
+
+        width:300px;
+        height:300px;
+
+    }
+
+    .energy-light{
+
+        width:450px;
+        height:450px;
+
+    }
+
+    .content{
+
+        padding:
+            20px;
+
+    }
+
+    .badge{
+
+        font-size:10px;
+
+        letter-spacing:3px;
+
+    }
+
+    .subtitle{
+
+        font-size:15px;
+
+    }
+
+    .button{
+
+        padding:
+            14px 28px;
+
+    }
+
+    .portal{
+
+        width:130px;
+        height:130px;
+
+    }
+
+    .portal.two{
+
+        width:200px;
+        height:200px;
+
+    }
+
+    .portal.three{
+
+        width:270px;
+        height:270px;
+
+    }
+
+    .transition-text{
+
+        margin-top:220px;
+
+    }
+
+}
+
+</style>
+</head>
+
+
+<body>
+
+
+<!-- =================================
+     FRONT PAGE
+================================= -->
+
+<section class="hero">
+
+
+    <!-- MOVING ENERGY -->
+
+    <div class="energy-light"></div>
+
+
+    <!-- ROTATING RING -->
+
+    <div class="main-ring"></div>
+
+
+    <!-- LIGHT STREAKS -->
+
+    <div class="streak s1"></div>
+
+    <div class="streak s2"></div>
+
+    <div class="streak s3"></div>
+
+
+    <!-- CONTENT -->
+
+    <div class="content">
+
+
+        <div class="badge">
+
+            MARVEL FAN PROJECT
+
+        </div>
+
+
+        <h1 class="title">
+
+            MCU BASELINE
+
+            <br>
+
+            <span>FAN HUB</span>
+
+        </h1>
+
+
+        <p class="subtitle">
+
+            Explore a cinematic fan-made MCU hero hub
+            with interactive character profiles,
+            futuristic effects and powerful visuals.
+
+        </p>
+
+
+        <a
+            href="hub.html"
+            class="button"
+            id="enterHub">
+
+            ENTER THE HUB
+
+        </a>
+
+
+    </div>
+
+</section>
+
+
+
+<!-- =================================
+     CINEMATIC TRANSITION
+================================= -->
+
+<div id="transition">
+
+
+    <div class="portal"></div>
+
+    <div class="portal two"></div>
+
+    <div class="portal three"></div>
+
+
+    <div class="portal-core"></div>
+
+
+    <div class="transition-text">
+
+        ENTERING THE HUB
+
+    </div>
+
+
+</div>
+
+
+
+<script>
+
+
+/* =================================
+   ENTER HUB TRANSITION
+================================= */
+
+const enterHub =
+    document.getElementById(
+        "enterHub"
+    );
+
+const transition =
+    document.getElementById(
+        "transition"
+    );
+
+
+enterHub.addEventListener(
+    "click",
+    function(event){
+
+        /*
+        Stop normal link behaviour
+        temporarily.
+        */
+
+        event.preventDefault();
+
+
+        /*
+        Start cinematic transition.
+        */
+
+        transition.classList.add(
+            "active"
+        );
+
+
+        /*
+        Open hub after animation.
+        */
+
+        setTimeout(
+            function(){
+
+                window.location.href =
+                    "hub.html";
+
+            },
+            1000
+        );
+
+    }
+);
+
+
+/* =================================
+   PREVENT BACKGROUND SCROLL
+================================= */
+
+document.body.style.overflow =
+    "hidden";
+
+</script>
+
+
+</body>
+</html>
