@@ -8,351 +8,438 @@
 
 <style>
 *{
-  margin:0;
-  padding:0;
-  box-sizing:border-box;
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
 }
 
 html,body{
-  width:100%;
-  min-height:100%;
+  width:100%;
+  min-height:100%;
 }
 
 body{
-  background:#020305;
-  color:white;
-  font-family:Arial,Helvetica,sans-serif;
-  overflow-x:hidden;
+  background:#020305;
+  color:white;
+  font-family:Arial,Helvetica,sans-serif;
+  overflow-x:hidden;
 }
 
+/* MAIN HERO */
 .hero-page{
-  position:relative;
-  min-height:100vh;
-  min-height:100svh;
-  display:flex;
-  align-items:flex-end;
-  overflow:hidden;
+  position:relative;
+  width:100%;
+  min-height:100vh;
+  min-height:100svh;
+  display:flex;
+  align-items:flex-end;
+  overflow:hidden;
 }
 
-.hero-bg{
-  position:absolute;
-  inset:0;
-  width:100%;
-  height:100%;
-  background-position:center;
-  background-size:cover;
-  background-repeat:no-repeat;
-  z-index:0;
+/* VIDEO BACKGROUND */
+.hero-video{
+  position:absolute;
+  inset:0;
+  width:100%;
+  height:100%;
+  object-fit:cover;
+  z-index:0;
+  background:#020305;
 }
 
+/* CINEMATIC OVERLAY */
 .overlay{
   position:absolute;
   inset:0;
   z-index:1;
+
   background:
     linear-gradient(
       90deg,
-      rgba(0,0,0,.55),
-      rgba(0,0,0,.25),
-      rgba(0,0,0,.05)
+      rgba(0,0,0,.75),
+      rgba(0,0,0,.35),
+      rgba(0,0,0,.08)
     ),
     linear-gradient(
       0deg,
-      rgba(0,0,0,.65),
+      rgba(0,0,0,.85),
+      rgba(0,0,0,.15),
       transparent 70%
     );
 }
 
+/* TOP BAR */
 .top{
-  position:absolute;
-  top:0;
-  left:0;
-  right:0;
-  z-index:3;
+  position:absolute;
+  top:0;
+  left:0;
+  right:0;
+  z-index:3;
 
-  display:flex;
-  justify-content:space-between;
-  align-items:center;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
 
-  padding:20px;
+  padding:20px;
 }
 
 .logo{
-  font-size:12px;
-  letter-spacing:3px;
-  color:#e8edf5;
+  font-size:12px;
+  letter-spacing:3px;
+  color:#e8edf5;
+  font-weight:bold;
 }
 
 .back{
-  color:white;
-  text-decoration:none;
-  padding:10px 18px;
-  border:1px solid rgba(255,255,255,.25);
-  border-radius:25px;
-  background:rgba(0,0,0,.35);
+  color:white;
+  text-decoration:none;
+  padding:10px 18px;
+
+  border:1px solid rgba(255,255,255,.25);
+  border-radius:25px;
+
+  background:rgba(0,0,0,.4);
+  backdrop-filter:blur(8px);
 }
 
+/* CONTENT */
 .content{
-  position:relative;
-  z-index:2;
-  width:100%;
-  max-width:1100px;
-  padding:60px;
-  padding-bottom:80px;
+  position:relative;
+  z-index:2;
+
+  width:100%;
+  max-width:1100px;
+
+  padding:60px;
+  padding-bottom:80px;
 }
 
 .tag{
-  color:#ffcf4a;
-  font-size:13px;
-  letter-spacing:5px;
-  margin-bottom:15px;
-  font-weight:bold;
+  color:#ffcf4a;
+  font-size:13px;
+  letter-spacing:5px;
+  margin-bottom:15px;
+  font-weight:bold;
 }
 
 h1{
-  font-size:clamp(55px,11vw,120px);
-  line-height:.9;
-  letter-spacing:4px;
-  margin-bottom:20px;
-  text-shadow:0 5px 30px rgba(0,0,0,.8);
+  font-size:clamp(55px,11vw,120px);
+  line-height:.9;
+  letter-spacing:4px;
+  margin-bottom:20px;
+
+  text-shadow:
+    0 5px 30px rgba(0,0,0,.9);
 }
 
 .description{
-  max-width:600px;
-  color:#d2d8df;
-  font-size:17px;
-  line-height:1.7;
+  max-width:600px;
+
+  color:#d2d8df;
+  font-size:17px;
+  line-height:1.7;
+
+  text-shadow:0 2px 10px rgba(0,0,0,.8);
 }
 
+/* STATS */
 .stats{
-  display:flex;
-  flex-wrap:wrap;
-  gap:12px;
-  margin-top:28px;
+  display:flex;
+  flex-wrap:wrap;
+  gap:12px;
+  margin-top:28px;
 }
 
 .stat{
-  min-width:120px;
-  padding:14px 18px;
-  border-radius:14px;
-  background:rgba(10,12,16,.65);
-  border:1px solid rgba(255,255,255,.12);
+  min-width:120px;
+
+  padding:14px 18px;
+
+  border-radius:14px;
+
+  background:rgba(5,8,12,.65);
+  border:1px solid rgba(255,255,255,.15);
+
+  backdrop-filter:blur(8px);
 }
 
 .stat small{
-  display:block;
-  color:#9ba6b5;
-  font-size:10px;
-  letter-spacing:2px;
-  margin-bottom:6px;
+  display:block;
+
+  color:#9ba6b5;
+  font-size:10px;
+  letter-spacing:2px;
+
+  margin-bottom:6px;
 }
 
 .stat strong{
-  font-size:14px;
+  font-size:14px;
 }
 
+/* BUTTON */
 .action{
-  display:inline-block;
-  margin-top:28px;
-  padding:14px 25px;
-  border-radius:30px;
-  text-decoration:none;
-  color:white;
-  font-weight:bold;
-  background:linear-gradient(90deg,#d71920,#ffb000);
+  display:inline-block;
+
+  margin-top:28px;
+  padding:14px 25px;
+
+  border-radius:30px;
+
+  text-decoration:none;
+  color:white;
+  font-weight:bold;
+
+  background:linear-gradient(
+    90deg,
+    #d71920,
+    #ffb000
+  );
+
+  box-shadow:
+    0 8px 30px rgba(255,100,0,.25);
 }
 
+/* MOBILE */
 @media(max-width:700px){
 
-  .hero-page{
-    align-items:flex-end;
-  }
+  .hero-page{
+    align-items:flex-end;
+  }
 
-  .hero-bg{
-    background-position:center top;
-  }
+  .overlay{
+    background:
+      linear-gradient(
+        0deg,
+        rgba(0,0,0,.92),
+        rgba(0,0,0,.45),
+        rgba(0,0,0,.08)
+      );
+  }
 
-  .overlay{
-    background:
-      linear-gradient(
-        0deg,
-        rgba(0,0,0,.96),
-        rgba(0,0,0,.55),
-        rgba(0,0,0,.05)
-      );
-  }
+  .top{
+    padding:16px;
+  }
 
-  .top{
-    padding:16px;
-  }
+  .content{
+    padding:25px 20px 40px;
+  }
 
-  .content{
-    padding:25px 20px 40px;
-  }
+  h1{
+    font-size:58px;
+    letter-spacing:2px;
+  }
 
-  h1{
-    font-size:58px;
-    letter-spacing:2px;
-  }
+  .description{
+    font-size:15px;
+  }
 
-  .description{
-    font-size:15px;
-  }
-
-  .stat{
-    flex:1;
-    min-width:105px;
-  }
+  .stat{
+    flex:1;
+    min-width:105px;
+  }
 }
 </style>
 </head>
 
-  <body>
+<body>
 
 <div class="hero-page">
 
-  <div class="hero-bg" id="heroBg"></div>
+  <!-- CINEMATIC VIDEO BACKGROUND -->
+  <video
+    class="hero-video"
+    id="heroVideo"
+    autoplay
+    muted
+    loop
+    playsinline
+    preload="auto">
 
-  <div class="overlay"></div>
+    <source
+      src="iron-man-bg.mp4"
+      type="video/mp4">
 
-  <div class="top">
-    <div class="logo">MCU BASELINE FAN HUB</div>
+  </video>
 
-    <a class="back" href="index.html">
-      ← HUB
-    </a>
-  </div>
+  <!-- DARK CINEMATIC OVERLAY -->
+  <div class="overlay"></div>
 
-  <main class="content">
+  <!-- TOP BAR -->
+  <div class="top">
 
-    <div class="tag" id="heroTag">
-      MARVEL HERO
-    </div>
-    <h1 id="heroTitle">
-  IRON<br>MAN
-</h1>
+    <div class="logo">
+      MCU BASELINE FAN HUB
+    </div>
 
-<p class="description" id="heroDescription">
-  A brilliant engineer who uses advanced technology,
-  powerful armor and courage to protect others.
-</p>
+    <a class="back" href="index.html">
+      ← HUB
+    </a>
 
-<div class="stats" id="heroStats">
+  </div>
 
-  <div class="stat">
-    <small>POWER</small>
-    <strong id="power">TECHNOLOGY</strong>
-  </div>
+  <!-- HERO CONTENT -->
+  <main class="content">
 
-  <div class="stat">
-    <small>ARMOR</small>
-    <strong id="armor">ADVANCED</strong>
-  </div>
+    <div class="tag" id="heroTag">
+      MARVEL HERO
+    </div>
 
-  <div class="stat">
-    <small>STATUS</small>
-    <strong id="status">ACTIVE</strong>
-  </div>
+    <h1 id="heroTitle">
+      IRON<br>MAN
+    </h1>
+
+    <p class="description" id="heroDescription">
+      A brilliant engineer who uses advanced technology,
+      powerful armor and courage to protect others.
+    </p>
+
+    <div class="stats">
+
+      <div class="stat">
+        <small>POWER</small>
+        <strong id="power">
+          TECHNOLOGY
+        </strong>
+      </div>
+
+      <div class="stat">
+        <small>ARMOR</small>
+        <strong id="armor">
+          ADVANCED
+        </strong>
+      </div>
+
+      <div class="stat">
+        <small>STATUS</small>
+        <strong id="status">
+          ACTIVE
+        </strong>
+      </div>
+
+    </div>
+
+    <a class="action" href="index.html">
+      ← BACK TO HEROES
+    </a>
+
+  </main>
 
 </div>
 
-<a class="action" href="index.html">
-  ← BACK TO HEROES
-</a>
+<script>
 
-</main>
-
-</div>
-    <script>
+/* HERO DATA */
 
 const heroes = {
 
-  iron: {
-  title: "IRON<br>MAN",
-  description:
-    "A brilliant engineer who uses advanced technology, powerful armor and courage to protect others.",
-  power: "TECHNOLOGY",
-  armor: "ADVANCED",
-  status: "ACTIVE",
-  image: "HD-wallpaper-iron-man-avengers-ironman-marvel.jpg"
-},
+  iron: {
+    title: "IRON<br>MAN",
 
-  spider: {
-    title: "SPIDER<br>MAN",
-    description:
-      "A young hero known for agility, quick thinking and web-based movement.",
-    power: "AGILITY",
-    armor: "WEB GEAR",
-    status: "ACTIVE",
-    image: ""
-  },
+    description:
+      "A brilliant engineer who uses advanced technology, powerful armor and courage to protect others.",
 
-  captain: {
-    title: "CAPTAIN<br>AMERICA",
-    description:
-      "A determined hero known for courage, leadership, strength and an iconic shield.",
-    power: "STRENGTH",
-    armor: "SHIELD",
-    status: "ACTIVE",
-    image: ""
-  },
+    power: "TECHNOLOGY",
+    armor: "ADVANCED",
+    status: "ACTIVE",
 
-  thor: {
-    title: "THOR",
-    description:
-      "A powerful warrior associated with thunder, strength and a strong sense of duty.",
-    power: "THUNDER",
-    armor: "ARMED",
-    status: "ACTIVE",
-    image: ""
-  }
+    video: "iron-man-bg.mp4"
+  },
+
+  spider: {
+    title: "SPIDER<br>MAN",
+
+    description:
+      "A young hero known for agility, quick thinking and web-based movement.",
+
+    power: "AGILITY",
+    armor: "WEB GEAR",
+    status: "ACTIVE",
+
+    video: ""
+  },
+
+  captain: {
+    title: "CAPTAIN<br>AMERICA",
+
+    description:
+      "A determined hero known for courage, leadership, strength and an iconic shield.",
+
+    power: "STRENGTH",
+    armor: "SHIELD",
+    status: "ACTIVE",
+
+    video: ""
+  },
+
+  thor: {
+    title: "THOR",
+
+    description:
+      "A powerful warrior associated with thunder, strength and a strong sense of duty.",
+
+    power: "THUNDER",
+    armor: "ARMED",
+    status: "ACTIVE",
+
+    video: ""
+  }
 
 };
 
-const params = new URLSearchParams(window.location.search);
 
-const heroName = params.get("hero") || "iron";
+/* READ URL */
 
-const hero = heroes[heroName] || heroes.iron;
+const params =
+  new URLSearchParams(window.location.search);
 
-document.getElementById("heroTitle").innerHTML = hero.title;
+const heroName =
+  params.get("hero") || "iron";
+
+const hero =
+  heroes[heroName] || heroes.iron;
+
+
+/* UPDATE TEXT */
+
+document.getElementById("heroTitle").innerHTML =
+  hero.title;
 
 document.getElementById("heroDescription").textContent =
-  hero.description;
+  hero.description;
 
 document.getElementById("power").textContent =
-  hero.power;
+  hero.power;
 
 document.getElementById("armor").textContent =
-  hero.armor;
+  hero.armor;
 
 document.getElementById("status").textContent =
-  hero.status;
+  hero.status;
 
-const heroBg = document.getElementById("heroBg");
 
-if (hero.image) {
+/* UPDATE VIDEO */
 
-  const imageUrl = "./" + hero.image;
+const heroVideo =
+  document.getElementById("heroVideo");
 
-  heroBg.style.backgroundImage =
-    `url("${imageUrl}")`;
+if(hero.video){
 
-  heroBg.style.backgroundSize = "cover";
-  heroBg.style.backgroundPosition = "center";
-  heroBg.style.backgroundRepeat = "no-repeat";
+  heroVideo.src = hero.video;
 
-} else {
+  heroVideo.load();
 
-  heroBg.style.backgroundImage =
-    "linear-gradient(135deg,#05070c,#111827,#020305)";
+  heroVideo.play().catch(() => {
+    console.log("Autoplay waiting for browser permission.");
+  });
 
-      }
+}else{
+
+  heroVideo.style.display = "none";
+
+}
 
 </script>
 
 </body>
-</html>
-
-   
- 
+      </html>
