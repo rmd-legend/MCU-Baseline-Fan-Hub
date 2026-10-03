@@ -3,7 +3,6 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
 <title>MCU Baseline Fan Hub</title>
 
 <style>
@@ -13,34 +12,202 @@
   padding:0;
 }
 
-html{
-  scroll-behavior:smooth;
-}
-
 body{
   font-family:Arial,Helvetica,sans-serif;
   color:white;
   background:
-    radial-gradient(circle at 20% 10%,#163b63 0%,transparent 35%),
-    radial-gradient(circle at 80% 20%,#35143f 0%,transparent 35%),
+    radial-gradient(circle at top,#173c63,transparent 40%),
+    radial-gradient(circle at bottom,#30143d,transparent 40%),
     #03050a;
   min-height:100vh;
-  overflow-x:hidden;
 }
 
-/* TOP */
-header{
-  min-height:75vh;
+.hero{
+  min-height:65vh;
   display:flex;
   align-items:center;
   justify-content:center;
   text-align:center;
-  padding:60px 20px;
-  position:relative;
-  overflow:hidden;
+  padding:40px 20px;
 }
 
-header::before{
-  content:"";
-  position:absolute;
-  width:500px
+.content{
+  max-width:850px;
+}
+
+.badge{
+  color:#20d8ff;
+  letter-spacing:5px;
+  font-size:13px;
+  margin-bottom:20px;
+}
+
+h1{
+
+    font-size:clamp(45px,10vw,90px);
+  line-height:1;
+  letter-spacing:4px;
+  margin-bottom:25px;
+}
+
+.subtitle{
+  color:#aebed0;
+  font-size:18px;
+  line-height:1.7;
+}
+
+.button{
+  display:inline-block;
+  margin-top:30px;
+  padding:15px 30px;
+  border-radius:30px;
+  background:linear-gradient(90deg,#087cff,#00d9ff);
+  color:white;
+  text-decoration:none;
+  font-weight:bold;
+}
+
+.section{
+  max-width:1200px;
+  margin:auto;
+  padding:50px 20px 90px;
+}
+
+.title{
+  text-align:center;
+  margin-bottom:35px;
+}
+
+.title h2{
+  font-size:38px;
+  margin-bottom:10px;
+}
+
+.title p{
+  color:#8291a5;
+}
+
+.cards{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(230px,1fr));
+  gap:22px;
+}
+
+.card{
+  display:block;
+  min-height:290px;
+  padding:30px 24px;
+  border-radius:25px;
+  text-decoration:none;
+  color:white;
+  background:linear-gradient(145deg,#102d3d,#07101a);
+  border:1px solid rgba(0,210,255,.15);
+  transition:.3s;
+}
+
+.card:hover{
+  transform:translateY(-8px);
+  border-color:#20d8ff;
+}
+
+.icon{
+  font-size:65px;
+  margin-bottom:25px;
+}
+
+.card h3{
+  font-size:26px;
+  margin-bottom:12px;
+}
+
+.card p{
+  color:#9eb0c3;
+  line-height:1.6;
+}
+
+.open{
+  display:inline-block;
+  margin-top:22px;
+  color:#20d8ff;
+  font-weight:bold;
+}
+
+footer{
+  text-align:center;
+  padding:30px 20px;
+  color:#687587;
+  border-top:1px solid rgba(255,255,255,.08);
+  font-size:12px;
+}
+
+@media(max-width:600px){
+  .cards{
+    grid-template-columns:1fr;
+  }
+}
+</style>
+</head>
+
+<body>
+
+<section class="hero">
+  <div class="content">
+    <div class="badge">MARVEL FAN PROJECT</div>
+    <h1>MCU BASELINE<br>FAN HUB</h1>
+
+    <p class="subtitle">
+      Explore a cinematic fan-made hero hub with interactive
+      character profiles and futuristic effects.
+    </p>
+
+    <a class="button" href="#heroes">ENTER THE HUB</a>
+  </div>
+</section>
+
+<section class="section" id="heroes">
+
+  <div class="title">
+    <h2>FEATURED HEROES</h2>
+    <p>Select a hero to open the profile.</p>
+  </div>
+
+  <div class="cards">
+
+    <a class="card" href="hero.html?hero=iron">
+      <div class="icon">🤖</div>
+      <h3>IRON MAN</h3>
+      <p>Technology, armor and unstoppable innovation.</p>
+      <span class="open">OPEN PROFILE →</span>
+    </a>
+
+    <a class="card" href="hero.html?hero=spider">
+      <div class="icon">🕷️</div>
+      <h3>SPIDER-MAN</h3>
+      <p>Agility, courage and a city full of adventure.</p>
+      <span class="open">OPEN PROFILE →</span>
+    </a>
+
+    <a class="card" href="hero.html?hero=captain">
+      <div class="icon">🛡️</div>
+      <h3>CAPTAIN AMERICA</h3>
+      <p>Courage, leadership and determination.</p>
+      <span class="open">OPEN PROFILE →</span>
+    </a>
+
+    <a class="card" href="hero.html?hero=thor">
+      <div class="icon">⚡</div>
+      <h3>THOR</h3>
+      <p>Thunder, strength and legendary power.</p>
+      <span class="open">OPEN PROFILE →</span>
+    </a>
+
+  </div>
+</section>
+
+<footer>
+  MCU BASELINE FAN HUB<br>
+  Fan-made project. Not affiliated with Marvel Studios.
+</footer>
+
+</body>
+</html>
