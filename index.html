@@ -12,11 +12,14 @@
   padding:0;
 }
 
+html{
+  scroll-behavior:smooth;
+}
+
 body{
   font-family:Arial,Helvetica,sans-serif;
-  min-height:100vh;
-  color:white;
   background:#05070d;
+  color:white;
   overflow-x:hidden;
 }
 
@@ -26,166 +29,155 @@ body{
   align-items:center;
   justify-content:center;
   text-align:center;
-  padding:30px;
+  padding:30px 20px;
+  background:
+    radial-gradient(circle at 50% 20%,#183b68 0%,transparent 35%),
+    linear-gradient(135deg,#03050a,#091525,#020307);
   position:relative;
   overflow:hidden;
-  background:
-    radial-gradient(circle at 50% 35%, #233b68 0%, #0c1629 35%, #05070d 75%);
 }
 
-.hero::before,
-.hero::after{
+.hero:before{
   content:"";
   position:absolute;
+  width:500px;
+  height:500px;
+  border:1px solid rgba(0,200,255,.25);
   border-radius:50%;
-  filter:blur(2px);
-  animation:float 7s infinite alternate ease-in-out;
+  animation:spin 18s linear infinite;
 }
 
-.hero::before{
-  width:320px;
-  height:320px;
-  background:rgba(0,180,255,.16);
-  top:8%;
-  left:-100px;
-}
-
-.hero::after{
-  width:280px;
-  height:280px;
-  background:rgba(255,40,70,.13);
-  bottom:-80px;
-  right:-70px;
-  animation-delay:2s;
-}
-
-.content{
+.hero-content{
   position:relative;
   z-index:2;
-  max-width:850px;
+  animation:fadeUp 1.2s ease;
 }
 
 .badge{
   display:inline-block;
-  padding:9px 18px;
-  border:1px solid rgba(255,255,255,.3);
+  padding:8px 15px;
+  border:1px solid #24d8ff;
   border-radius:30px;
-  background:rgba(255,255,255,.08);
-  backdrop-filter:blur(10px);
-  letter-spacing:3px;
+  color:#24d8ff;
   font-size:12px;
-  margin-bottom:25px;
+  letter-spacing:2px;
+  margin-bottom:20px;
 }
 
 h1{
-  font-size:clamp(42px,9vw,90px);
-  letter-spacing:4px;
-  line-height:.95;
-  text-transform:uppercase;
-  text-shadow:0 0 25px rgba(80,180,255,.45);
-  animation:titleIn 1.2s ease;
+  font-size:clamp(40px,9vw,85px);
+  letter-spacing:5px;
+  text-shadow:0 0 25px rgba(0,200,255,.5);
 }
 
-h1 span{
-  display:block;
-  font-size:.42em;
-  letter-spacing:8px;
-  margin-top:18px;
-  opacity:.8;
-}
-
-p{
-  margin:28px auto;
+.subtitle{
+  margin:18px auto 30px;
   max-width:650px;
-  color:#c9d3e4;
+  color:#b9c7d8;
   line-height:1.7;
-  font-size:17px;
 }
 
-.buttons{
-  display:flex;
-  gap:14px;
-  justify-content:center;
-  flex-wrap:wrap;
-}
-
-button{
-  border:1px solid rgba(255,255,255,.25);
-  border-radius:12px;
+.btn{
+  display:inline-block;
   padding:14px 24px;
+  margin:6px;
+  border-radius:30px;
+  text-decoration:none;
   color:white;
-  background:rgba(255,255,255,.08);
-  cursor:pointer;
-  font-size:15px;
+  background:linear-gradient(90deg,#087cff,#00d4ff);
+  font-weight:bold;
   transition:.3s;
-  backdrop-filter:blur(8px);
 }
 
-button:hover{
+.btn:hover{
   transform:translateY(-4px) scale(1.03);
-  background:rgba(255,255,255,.16);
+  box-shadow:0 0 25px rgba(0,200,255,.5);
 }
 
 .section{
   padding:70px 20px;
-  background:#080b13;
-  text-align:center;
+  max-width:1100px;
+  margin:auto;
 }
 
 .section h2{
+  text-align:center;
   font-size:34px;
   margin-bottom:35px;
 }
 
-.cards{
-  max-width:1100px;
-  margin:auto;
+.grid{
   display:grid;
   grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
-  gap:18px;
+  gap:20px;
 }
 
 .card{
-  min-height:180px;
-  padding:30px 20px;
-  border-radius:20px;
+  min-height:240px;
+  padding:25px;
   border:1px solid rgba(255,255,255,.12);
-  background:linear-gradient(145deg,#121a2b,#090d17);
-  transition:.35s;
+  border-radius:22px;
+  background:linear-gradient(145deg,#101827,#080c14);
+  text-decoration:none;
+  color:white;
+  display:flex;
+  flex-direction:column;
+  justify-content:flex-end;
+  position:relative;
+  overflow:hidden;
+  transition:.4s;
+}
+
+.card:before{
+  content:"";
+  position:absolute;
+  inset:-100%;
+  background:linear-gradient(120deg,transparent,rgba(0,210,255,.15),transparent);
+  transform:rotate(20deg);
+  transition:.5s;
 }
 
 .card:hover{
-  transform:translateY(-8px);
-  border-color:rgba(100,190,255,.5);
-  box-shadow:0 15px 45px rgba(0,0,0,.35);
+  transform:translateY(-10px);
+  border-color:#19cfff;
+  box-shadow:0 15px 40px rgba(0,180,255,.18);
+}
+
+.card:hover:before{
+  inset:100%;
+}
+
+.icon{
+  font-size:50px;
+  margin-bottom:auto;
 }
 
 .card h3{
-  margin-bottom:12px;
-  font-size:22px;
+  font-size:25px;
+  margin-bottom:8px;
 }
 
 .card p{
-  margin:0;
-  font-size:14px;
+  color:#9eabbc;
+  line-height:1.5;
 }
 
 footer{
-  padding:25px;
   text-align:center;
-  color:#78859b;
-  background:#04050a;
+  padding:35px 20px;
+  color:#718096;
+  border-top:1px solid rgba(255,255,255,.08);
   font-size:13px;
 }
 
-@keyframes float{
-  from{transform:translate(0,0) scale(1)}
-  to{transform:translate(70px,40px) scale(1.15)}
+@keyframes fadeUp{
+  from{opacity:0;transform:translateY(30px)}
+  to{opacity:1;transform:translateY(0)}
 }
 
-@keyframes titleIn{
-  from{opacity:0;transform:translateY(30px) scale(.96)}
-  to{opacity:1;transform:translateY(0) scale(1)}
+@keyframes spin{
+  from{transform:rotate(0deg)}
+  to{transform:rotate(360deg)}
 }
 </style>
 </head>
@@ -193,66 +185,65 @@ footer{
 <body>
 
 <section class="hero">
-  <div class="content">
+  <div class="hero-content">
+    <div class="badge">FAN-MADE EXPERIENCE</div>
 
-    <div class="badge">FAN-MADE • CINEMATIC HUB</div>
+    <h1>MCU BASELINE</h1>
 
-    <h1>
-      MCU
-      <span>BASELINE FAN HUB</span>
-    </h1>
-
-    <p>
-      Explore heroes, stories, movies and cinematic experiences
-      inspired by the Marvel universe — all in one fan-made hub.
+    <p class="subtitle">
+      Enter a cinematic fan-made universe built for heroes,
+      stories, discoveries and futuristic experiences.
     </p>
 
-    <div class="buttons">
-      <button onclick="document.getElementById('heroes').scrollIntoView({behavior:'smooth'})">
-        Explore Heroes
-      </button>
-
-      <button onclick="alert('More cinematic features are coming soon!')">
-        Enter the Hub
-      </button>
-    </div>
-
+    <a class="btn" href="#heroes">EXPLORE HEROES</a>
+    <a class="btn" href="#about">ENTER THE HUB</a>
   </div>
 </section>
 
 <section class="section" id="heroes">
-
   <h2>Featured Heroes</h2>
 
-  <div class="cards">
+  <div class="grid">
 
-    <div class="card">
+    <a class="card" href="hero.html?hero=iron">
+      <div class="icon">⚙️</div>
       <h3>IRON HERO</h3>
-      <p>Technology, innovation and an armored legacy.</p>
-    </div>
+      <p>Technology, armor and unstoppable innovation.</p>
+    </a>
 
-    <div class="card">
+    <a class="card" href="hero.html?hero=web">
+      <div class="icon">🕸️</div>
       <h3>WEB HERO</h3>
-      <p>Agility, responsibility and a city-sized adventure.</p>
-    </div>
+      <p>Agility, courage and a city full of adventure.</p>
+    </a>
 
-    <div class="card">
+    <a class="card" href="hero.html?hero=star">
+      <div class="icon">⭐</div>
       <h3>STAR HERO</h3>
-      <p>A symbol of courage, leadership and determination.</p>
-    </div>
+      <p>A cosmic hero facing challenges beyond Earth.</p>
+    </a>
 
-    <div class="card">
+    <a class="card" href="hero.html?hero=thunder">
+      <div class="icon">⚡</div>
       <h3>THUNDER HERO</h3>
-      <p>Power, mythology and the force of thunder.</p>
-    </div>
+      <p>Power, lightning and a legendary warrior spirit.</p>
+    </a>
 
   </div>
+</section>
 
+<section class="section" id="about">
+  <h2>Welcome To The Hub</h2>
+  <p style="text-align:center;color:#aab7c7;line-height:1.8;">
+    Explore our fan-made hero universe. More characters,
+    pages and interactive features will be added here.
+  </p>
 </section>
 
 <footer>
-  MCU Baseline Fan Hub • Fan-made project • Not affiliated with Marvel Studios
+  MCU Baseline Fan Hub — Fan-made project.<br>
+  Not affiliated with Marvel Studios.
 </footer>
 
 </body>
-        </html>
+</html>
