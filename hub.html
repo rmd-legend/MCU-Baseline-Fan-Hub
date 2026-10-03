@@ -1,1 +1,402 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
+<title>MCU Baseline Fan Hub</title>
+
+<style>
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+html,body{
+    min-height:100%;
+}
+
+body{
+    background:#02040a;
+    color:white;
+    font-family:Arial,Helvetica,sans-serif;
+    overflow-x:hidden;
+}
+
+.page{
+    min-height:100vh;
+    padding:25px;
+    position:relative;
+    overflow:hidden;
+}
+
+/* BACKGROUND */
+
+.page::before{
+    content:"";
+    position:absolute;
+    width:600px;
+    height:600px;
+    border-radius:50%;
+    background:radial-gradient(
+        circle,
+        rgba(0,200,255,.15),
+        transparent 70%
+    );
+    top:-200px;
+    right:-150px;
+    animation:move 8s ease-in-out infinite alternate;
+}
+
+@keyframes move{
+    from{transform:translate(0,0);}
+    to{transform:translate(-150px,150px);}
+}
+
+/* HEADER */
+
+.header{
+    position:relative;
+    z-index:2;
+
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+
+    max-width:1200px;
+    margin:auto;
+}
+
+.logo{
+    font-size:12px;
+    letter-spacing:3px;
+}
+
+.home{
+    color:white;
+    text-decoration:none;
+    padding:10px 18px;
+    border:1px solid rgba(255,255,255,.25);
+    border-radius:25px;
+}
+
+/* TITLE */
+
+.hero-title{
+    position:relative;
+    z-index:2;
+
+    text-align:center;
+
+    padding-top:90px;
+}
+
+.hero-title small{
+    color:#20d9ff;
+    letter-spacing:5px;
+}
+
+.hero-title h1{
+    font-size:clamp(45px,9vw,90px);
+    margin-top:15px;
+    letter-spacing:4px;
+}
+
+.hero-title p{
+    color:#9daabd;
+    margin-top:15px;
+}
+
+/* CARDS */
+
+.cards{
+    position:relative;
+    z-index:2;
+
+    max-width:1200px;
+    margin:55px auto;
+
+    display:grid;
+    grid-template-columns:
+        repeat(4,1fr);
+
+    gap:20px;
+}
+
+.card{
+    position:relative;
+
+    min-height:360px;
+
+    border-radius:22px;
+
+    overflow:hidden;
+
+    border:1px solid rgba(255,255,255,.15);
+
+    background:#090d14;
+
+    text-decoration:none;
+    color:white;
+
+    transition:.4s;
+
+    animation:cardIn .8s ease both;
+}
+
+.card:nth-child(2){
+    animation-delay:.1s;
+}
+
+.card:nth-child(3){
+    animation-delay:.2s;
+}
+
+.card:nth-child(4){
+    animation-delay:.3s;
+}
+
+@keyframes cardIn{
+    from{
+        opacity:0;
+        transform:translateY(40px);
+    }
+    to{
+        opacity:1;
+        transform:translateY(0);
+    }
+}
+
+.card:hover{
+    transform:translateY(-10px) scale(1.02);
+
+    border-color:#20d9ff;
+
+    box-shadow:
+        0 0 35px rgba(0,210,255,.25);
+}
+
+.card img{
+    width:100%;
+    height:100%;
+    object-fit:cover;
+
+    position:absolute;
+    inset:0;
+
+    transition:.5s;
+}
+
+.card:hover img{
+    transform:scale(1.08);
+}
+
+.card::after{
+    content:"";
+
+    position:absolute;
+    inset:0;
+
+    background:
+        linear-gradient(
+            transparent 25%,
+            rgba(0,0,0,.9)
+        );
+}
+
+.card-info{
+    position:absolute;
+
+    z-index:2;
+
+    left:20px;
+    right:20px;
+    bottom:20px;
+}
+
+.card-info h2{
+    font-size:25px;
+    margin-bottom:8px;
+}
+
+.card-info span{
+    color:#20d9ff;
+    font-size:11px;
+    letter-spacing:2px;
+}
+
+/* MOBILE */
+
+@media(max-width:850px){
+
+    .cards{
+        grid-template-columns:
+            repeat(2,1fr);
+    }
+
+}
+
+@media(max-width:520px){
+
+    .page{
+        padding:18px;
+    }
+
+    .hero-title{
+        padding-top:70px;
+    }
+
+    .cards{
+        grid-template-columns:1fr;
+    }
+
+    .card{
+        min-height:320px;
+    }
+
+}
+
+</style>
+</head>
+
+<body>
+
+<div class="page">
+
+    <header class="header">
+
+        <div class="logo">
+            MCU BASELINE FAN HUB
+        </div>
+
+        <a
+            href="index.html"
+            class="home">
+
+            ← HOME
+
+        </a>
+
+    </header>
+
+
+    <section class="hero-title">
+
+        <small>
+            EXPLORE THE UNIVERSE
+        </small>
+
+        <h1>
+            FEATURED HEROES
+        </h1>
+
+        <p>
+            Enter the world of your favourite heroes.
+        </p>
+
+    </section>
+
+
+    <section class="cards">
+
+
+        <a
+            class="card"
+            href="hero.html?hero=iron">
+
+            <img
+                src="HD-wallpaper-iron-man-avengers-ironman-marvel.jpg"
+                alt="Iron Man">
+
+            <div class="card-info">
+
+                <span>
+                    HERO 01
+                </span>
+
+                <h2>
+                    IRON MAN
+                </h2>
+
+            </div>
+
+        </a>
+
+
+        <a
+            class="card"
+            href="hero.html?hero=spider">
+
+            <img
+                src="spider_man_1_1_4.jpeg"
+                alt="Spider-Man">
+
+            <div class="card-info">
+
+                <span>
+                    HERO 02
+                </span>
+
+                <h2>
+                    SPIDER-MAN
+                </h2>
+
+            </div>
+
+        </a>
+
+
+        <a
+            class="card"
+            href="hero.html?hero=captain">
+
+            <img
+                src="images (1).jpeg"
+                alt="Captain America">
+
+            <div class="card-info">
+
+                <span>
+                    HERO 03
+                </span>
+
+                <h2>
+                    CAPTAIN AMERICA
+                </h2>
+
+            </div>
+
+        </a>
+
+
+        <a
+            class="card"
+            href="hero.html?hero=thor">
+
+            <img
+                src="images.jpeg"
+                alt="Thor">
+
+            <div class="card-info">
+
+                <span>
+                    HERO 04
+                </span>
+
+                <h2>
+                    THOR
+                </h2>
+
+            </div>
+
+        </a>
+
+
+    </section>
+
+</div>
+
+</body>
+      </html>
