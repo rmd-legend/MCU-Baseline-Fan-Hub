@@ -3,6 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
 <title>MCU Baseline Fan Hub</title>
 
 <style>
@@ -18,232 +19,28 @@ html{
 
 body{
   font-family:Arial,Helvetica,sans-serif;
-  background:#05070d;
   color:white;
+  background:
+    radial-gradient(circle at 20% 10%,#163b63 0%,transparent 35%),
+    radial-gradient(circle at 80% 20%,#35143f 0%,transparent 35%),
+    #03050a;
+  min-height:100vh;
   overflow-x:hidden;
 }
 
-.hero{
-  min-height:100vh;
+/* TOP */
+header{
+  min-height:75vh;
   display:flex;
   align-items:center;
   justify-content:center;
   text-align:center;
-  padding:30px 20px;
-  background:
-    radial-gradient(circle at 50% 20%,#183b68 0%,transparent 35%),
-    linear-gradient(135deg,#03050a,#091525,#020307);
+  padding:60px 20px;
   position:relative;
   overflow:hidden;
 }
 
-.hero:before{
+header::before{
   content:"";
   position:absolute;
-  width:500px;
-  height:500px;
-  border:1px solid rgba(0,200,255,.25);
-  border-radius:50%;
-  animation:spin 18s linear infinite;
-}
-
-.hero-content{
-  position:relative;
-  z-index:2;
-  animation:fadeUp 1.2s ease;
-}
-
-.badge{
-  display:inline-block;
-  padding:8px 15px;
-  border:1px solid #24d8ff;
-  border-radius:30px;
-  color:#24d8ff;
-  font-size:12px;
-  letter-spacing:2px;
-  margin-bottom:20px;
-}
-
-h1{
-  font-size:clamp(40px,9vw,85px);
-  letter-spacing:5px;
-  text-shadow:0 0 25px rgba(0,200,255,.5);
-}
-
-.subtitle{
-  margin:18px auto 30px;
-  max-width:650px;
-  color:#b9c7d8;
-  line-height:1.7;
-}
-
-.btn{
-  display:inline-block;
-  padding:14px 24px;
-  margin:6px;
-  border-radius:30px;
-  text-decoration:none;
-  color:white;
-  background:linear-gradient(90deg,#087cff,#00d4ff);
-  font-weight:bold;
-  transition:.3s;
-}
-
-.btn:hover{
-  transform:translateY(-4px) scale(1.03);
-  box-shadow:0 0 25px rgba(0,200,255,.5);
-}
-
-.section{
-  padding:70px 20px;
-  max-width:1100px;
-  margin:auto;
-}
-
-.section h2{
-  text-align:center;
-  font-size:34px;
-  margin-bottom:35px;
-}
-
-.grid{
-  display:grid;
-  grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
-  gap:20px;
-}
-
-.card{
-  min-height:240px;
-  padding:25px;
-  border:1px solid rgba(255,255,255,.12);
-  border-radius:22px;
-  background:linear-gradient(145deg,#101827,#080c14);
-  text-decoration:none;
-  color:white;
-  display:flex;
-  flex-direction:column;
-  justify-content:flex-end;
-  position:relative;
-  overflow:hidden;
-  transition:.4s;
-}
-
-.card:before{
-  content:"";
-  position:absolute;
-  inset:-100%;
-  background:linear-gradient(120deg,transparent,rgba(0,210,255,.15),transparent);
-  transform:rotate(20deg);
-  transition:.5s;
-}
-
-.card:hover{
-  transform:translateY(-10px);
-  border-color:#19cfff;
-  box-shadow:0 15px 40px rgba(0,180,255,.18);
-}
-
-.card:hover:before{
-  inset:100%;
-}
-
-.icon{
-  font-size:50px;
-  margin-bottom:auto;
-}
-
-.card h3{
-  font-size:25px;
-  margin-bottom:8px;
-}
-
-.card p{
-  color:#9eabbc;
-  line-height:1.5;
-}
-
-footer{
-  text-align:center;
-  padding:35px 20px;
-  color:#718096;
-  border-top:1px solid rgba(255,255,255,.08);
-  font-size:13px;
-}
-
-@keyframes fadeUp{
-  from{opacity:0;transform:translateY(30px)}
-  to{opacity:1;transform:translateY(0)}
-}
-
-@keyframes spin{
-  from{transform:rotate(0deg)}
-  to{transform:rotate(360deg)}
-}
-</style>
-</head>
-
-<body>
-
-<section class="hero">
-  <div class="hero-content">
-    <div class="badge">FAN-MADE EXPERIENCE</div>
-
-    <h1>MCU BASELINE</h1>
-
-    <p class="subtitle">
-      Enter a cinematic fan-made universe built for heroes,
-      stories, discoveries and futuristic experiences.
-    </p>
-
-    <a class="btn" href="#heroes">EXPLORE HEROES</a>
-    <a class="btn" href="#about">ENTER THE HUB</a>
-  </div>
-</section>
-
-<section class="section" id="heroes">
-  <h2>Featured Heroes</h2>
-
-  <div class="grid">
-
-    <a class="card" href="hero.html?hero=iron">
-      <div class="icon">⚙️</div>
-      <h3>IRON HERO</h3>
-      <p>Technology, armor and unstoppable innovation.</p>
-    </a>
-
-    <a class="card" href="hero.html?hero=web">
-      <div class="icon">🕸️</div>
-      <h3>WEB HERO</h3>
-      <p>Agility, courage and a city full of adventure.</p>
-    </a>
-
-    <a class="card" href="hero.html?hero=star">
-      <div class="icon">⭐</div>
-      <h3>STAR HERO</h3>
-      <p>A cosmic hero facing challenges beyond Earth.</p>
-    </a>
-
-    <a class="card" href="hero.html?hero=thunder">
-      <div class="icon">⚡</div>
-      <h3>THUNDER HERO</h3>
-      <p>Power, lightning and a legendary warrior spirit.</p>
-    </a>
-
-  </div>
-</section>
-
-<section class="section" id="about">
-  <h2>Welcome To The Hub</h2>
-  <p style="text-align:center;color:#aab7c7;line-height:1.8;">
-    Explore our fan-made hero universe. More characters,
-    pages and interactive features will be added here.
-  </p>
-</section>
-
-<footer>
-  MCU Baseline Fan Hub — Fan-made project.<br>
-  Not affiliated with Marvel Studios.
-</footer>
-
-</body>
-</html>
+  width:500px
