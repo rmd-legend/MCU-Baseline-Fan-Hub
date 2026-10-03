@@ -1,14 +1,11 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
 
 <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<meta name="viewport"
-      content="width=device-width, initial-scale=1.0">
-
-<title>MCU Hero | Fan Hub</title>
+<title>MCU Hero</title>
 
 <style>
 
@@ -18,8 +15,7 @@
   box-sizing:border-box;
 }
 
-html,
-body{
+html,body{
   width:100%;
   min-height:100%;
 }
@@ -31,318 +27,173 @@ body{
   overflow-x:hidden;
 }
 
-
-/* =========================
-   HERO PAGE
-========================= */
-
 .hero-page{
-
   position:relative;
-
   min-height:100vh;
   min-height:100svh;
-
   display:flex;
   align-items:flex-end;
-
   overflow:hidden;
 }
 
-
-/* =========================
-   HERO BACKGROUND IMAGE
-========================= */
-
+/* BACKGROUND IMAGE */
 .hero-image{
-
   position:absolute;
-
   inset:0;
-
   width:100%;
   height:100%;
 
   background-size:cover;
-
   background-position:center;
-
   background-repeat:no-repeat;
 
   z-index:0;
 }
 
-
-/* =========================
-   CINEMATIC OVERLAY
-========================= */
-
+/* DARK EFFECT */
 .overlay{
-
   position:absolute;
-
   inset:0;
-
   z-index:1;
 
   background:
-
     linear-gradient(
       90deg,
       rgba(0,0,0,.82),
       rgba(0,0,0,.35),
-      rgba(0,0,0,.05)
+      rgba(0,0,0,.08)
     ),
-
     linear-gradient(
       0deg,
-      rgba(0,0,0,.94),
+      rgba(0,0,0,.92),
       transparent 65%
     );
 }
 
-
-/* =========================
-   TOP BAR
-========================= */
-
+/* TOP */
 .top{
-
   position:absolute;
-
   top:0;
   left:0;
   right:0;
-
   z-index:3;
 
   display:flex;
-
   justify-content:space-between;
-
   align-items:center;
 
   padding:20px;
 }
 
-
 .logo{
-
   font-size:12px;
-
   letter-spacing:3px;
-
-  color:#e8edf5;
 }
-
 
 .back{
-
   color:white;
-
   text-decoration:none;
-
   padding:10px 18px;
-
   border:1px solid rgba(255,255,255,.3);
-
   border-radius:25px;
-
   background:rgba(0,0,0,.4);
-
-  transition:.3s;
 }
 
-
-.back:hover{
-
-  background:rgba(255,255,255,.15);
-}
-
-
-/* =========================
-   CONTENT
-========================= */
-
+/* CONTENT */
 .content{
-
   position:relative;
-
   z-index:2;
 
   width:100%;
-
   max-width:1100px;
 
   padding:60px;
-
   padding-bottom:80px;
 }
 
-
-/* =========================
-   TAG
-========================= */
-
 .tag{
-
   color:#ffcf4a;
-
   font-size:13px;
-
   letter-spacing:5px;
-
   margin-bottom:15px;
-
   font-weight:bold;
 }
 
-
-/* =========================
-   HERO TITLE
-========================= */
-
 h1{
-
-  font-size:clamp(
-    55px,
-    11vw,
-    120px
-  );
-
+  font-size:clamp(55px,11vw,120px);
   line-height:.9;
-
   letter-spacing:4px;
-
   margin-bottom:20px;
 
-  text-shadow:
-    0 5px 30px rgba(0,0,0,.9);
+  text-shadow:0 5px 30px rgba(0,0,0,.9);
 }
 
-
-/* =========================
-   DESCRIPTION
-========================= */
-
 .description{
-
   max-width:600px;
-
   color:#e0e5eb;
-
   font-size:17px;
-
   line-height:1.7;
 }
 
-
-/* =========================
-   STATS
-========================= */
-
 .stats{
-
   display:flex;
-
   flex-wrap:wrap;
-
   gap:12px;
-
   margin-top:28px;
 }
 
-
 .stat{
-
   min-width:120px;
-
   padding:14px 18px;
 
   border-radius:14px;
 
   background:rgba(10,12,16,.65);
-
   border:1px solid rgba(255,255,255,.15);
 
   backdrop-filter:blur(8px);
 }
 
-
 .stat small{
-
   display:block;
-
   color:#9ba6b5;
-
   font-size:10px;
-
   letter-spacing:2px;
-
   margin-bottom:6px;
 }
 
-
 .stat strong{
-
   font-size:14px;
 }
 
-
-/* =========================
-   BACK BUTTON
-========================= */
-
 .action{
-
   display:inline-block;
 
   margin-top:28px;
-
   padding:14px 25px;
 
   border-radius:30px;
 
   text-decoration:none;
-
   color:white;
-
   font-weight:bold;
 
-  background:
-
-    linear-gradient(
-      90deg,
-      #d71920,
-      #ffb000
-    );
-
-  transition:.3s;
+  background:linear-gradient(
+    90deg,
+    #d71920,
+    #ffb000
+  );
 }
 
-
-.action:hover{
-
-  transform:translateY(-3px);
-}
-
-
-/* =========================
-   MOBILE
-========================= */
-
+/* MOBILE */
 @media(max-width:700px){
 
   .hero-image{
-
     background-position:center top;
   }
 
-
   .overlay{
-
     background:
-
       linear-gradient(
         0deg,
         rgba(0,0,0,.95),
@@ -351,187 +202,221 @@ h1{
       );
   }
 
-
   .top{
-
     padding:16px;
   }
 
-
   .content{
-
     padding:25px 20px 40px;
   }
 
-
   h1{
-
     font-size:58px;
-
     letter-spacing:2px;
   }
 
-
   .description{
-
     font-size:15px;
   }
 
-
   .stat{
-
     flex:1;
-
     min-width:105px;
   }
-
 }
 
 </style>
 
 </head>
 
-
 <body>
 
-
 <div class="hero-page">
-
-
-  <!-- HERO IMAGE -->
 
   <div
     class="hero-image"
     id="heroImage">
   </div>
 
-
-  <!-- DARK OVERLAY -->
-
   <div class="overlay"></div>
-
-
-  <!-- TOP BAR -->
 
   <div class="top">
 
     <div class="logo">
-
       MCU BASELINE FAN HUB
-
     </div>
-
 
     <a
       class="back"
       href="index.html">
-
       ← HUB
-
     </a>
 
   </div>
 
-
-  <!-- HERO CONTENT -->
-
   <main class="content">
-
 
     <div
       class="tag"
       id="heroTag">
-
       MARVEL HERO
-
     </div>
 
-
-    <h1
-      id="heroTitle">
-
+    <h1 id="heroTitle">
       IRON<br>MAN
-
     </h1>
-
 
     <p
       class="description"
       id="heroDescription">
-
-      A brilliant engineer who uses advanced
-      technology, powerful armor and courage
-      to protect others.
-
+      A brilliant engineer who uses advanced technology,
+      powerful armor and courage to protect others.
     </p>
-
-
-    <!-- STATS -->
 
     <div class="stats">
 
-
       <div class="stat">
-
-        <small>
-          POWER
-        </small>
-
-        <strong id="power">
-          TECHNOLOGY
-        </strong>
-
+        <small>POWER</small>
+        <strong id="power">TECHNOLOGY</strong>
       </div>
 
-
       <div class="stat">
-
-        <small>
-          ARMOR
-        </small>
-
-        <strong id="armor">
-          ADVANCED
-        </strong>
-
+        <small>ARMOR</small>
+        <strong id="armor">ADVANCED</strong>
       </div>
 
-
       <div class="stat">
-
-        <small>
-          STATUS
-        </small>
-
-        <strong id="status">
-          ACTIVE
-        </strong>
-
+        <small>STATUS</small>
+        <strong id="status">ACTIVE</strong>
       </div>
-
 
     </div>
-
-
-    <!-- BACK BUTTON -->
 
     <a
       class="action"
       href="index.html">
-
       ← BACK TO HEROES
-
     </a>
-
 
   </main>
 
 </div>
 
 
-
 <script>
 
+/* HERO DATA */
 
-/* =====================================
-   HERO DATA
+const heroes = {
+
+  iron: {
+    title:"IRON<br>MAN",
+
+    description:
+      "A brilliant engineer who uses advanced technology, powerful armor and courage to protect others.",
+
+    power:"TECHNOLOGY",
+    armor:"ADVANCED",
+    status:"ACTIVE",
+
+    image:
+      "https://rmd-legend.github.io/MCU-Baseline-Fan-Hub/HD-wallpaper-iron-man-avengers-ironman-marvel.jpg"
+  },
+
+
+  spider: {
+    title:"SPIDER<br>MAN",
+
+    description:
+      "A young hero known for agility, quick thinking and web-based movement.",
+
+    power:"AGILITY",
+    armor:"WEB GEAR",
+    status:"ACTIVE",
+
+    image:
+      "https://rmd-legend.github.io/MCU-Baseline-Fan-Hub/spider_man_1_1_4.jpeg"
+  },
+
+
+  thor: {
+    title:"THOR",
+
+    description:
+      "A powerful warrior associated with thunder, strength and a strong sense of duty.",
+
+    power:"THUNDER",
+    armor:"ARMED",
+    status:"ACTIVE",
+
+    image:
+      "https://rmd-legend.github.io/MCU-Baseline-Fan-Hub/images.jpeg"
+  },
+
+
+  captain: {
+    title:"CAPTAIN<br>AMERICA",
+
+    description:
+      "A determined hero known for courage, leadership, strength and an iconic shield.",
+
+    power:"STRENGTH",
+    armor:"SHIELD",
+    status:"ACTIVE",
+
+    image:
+      "https://rmd-legend.github.io/MCU-Baseline-Fan-Hub/images%20%281%29.jpeg"
+  }
+
+};
+
+
+/* GET HERO FROM URL */
+
+const params =
+  new URLSearchParams(
+    window.location.search
+  );
+
+const heroName =
+  params.get("hero") || "iron";
+
+const hero =
+  heroes[heroName] || heroes.iron;
+
+
+/* UPDATE TEXT */
+
+document.getElementById(
+  "heroTitle"
+).innerHTML = hero.title;
+
+document.getElementById(
+  "heroDescription"
+).textContent = hero.description;
+
+document.getElementById(
+  "power"
+).textContent = hero.power;
+
+document.getElementById(
+  "armor"
+).textContent = hero.armor;
+
+document.getElementById(
+  "status"
+).textContent = hero.status;
+
+
+/* UPDATE IMAGE */
+
+const heroImage =
+  document.getElementById("heroImage");
+
+heroImage.style.backgroundImage =
+  'url("' + hero.image + '")';
+
+</script>
+
+</body>
+</html>
