@@ -8,304 +8,304 @@
 
 <style>
 *{
-  margin:0;
-  padding:0;
-  box-sizing:border-box;
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
 }
 
 html,body{
-  width:100%;
-  min-height:100%;
+  width:100%;
+  min-height:100%;
 }
 
 body{
-  background:#020305;
-  color:white;
-  font-family:Arial,Helvetica,sans-serif;
-  overflow-x:hidden;
+  background:#020305;
+  color:white;
+  font-family:Arial,Helvetica,sans-serif;
+  overflow-x:hidden;
 }
 
 .hero-page{
-  position:relative;
-  min-height:100vh;
-  min-height:100svh;
-  display:flex;
-  align-items:flex-end;
-  overflow:hidden;
+  position:relative;
+  min-height:100vh;
+  min-height:100svh;
+  display:flex;
+  align-items:flex-end;
+  overflow:hidden;
 }
 
 .hero-bg{
-  position:absolute;
-  inset:0;
-  width:100%;
-  height:100%;
-  background-position:center;
-  background-size:cover;
-  background-repeat:no-repeat;
-  z-index:0;
+  position:absolute;
+  inset:0;
+  width:100%;
+  height:100%;
+  background-position:center;
+  background-size:cover;
+  background-repeat:no-repeat;
+  z-index:0;
 }
 
 .overlay{
-  position:absolute;
-  inset:0;
-  z-index:1;
-  background:
-    linear-gradient(
-      90deg,
-      rgba(0,0,0,.88),
-      rgba(0,0,0,.45),
-      rgba(0,0,0,.08)
-    ),
-    linear-gradient(
-      0deg,
-      rgba(0,0,0,.95),
-      transparent 60%
-    );
+  position:absolute;
+  inset:0;
+  z-index:1;
+  background:
+    linear-gradient(
+      90deg,
+      rgba(0,0,0,.88),
+      rgba(0,0,0,.45),
+      rgba(0,0,0,.08)
+    ),
+    linear-gradient(
+      0deg,
+      rgba(0,0,0,.95),
+      transparent 60%
+    );
 }
 
 .top{
-  position:absolute;
-  top:0;
-  left:0;
-  right:0;
-  z-index:3;
+  position:absolute;
+  top:0;
+  left:0;
+  right:0;
+  z-index:3;
 
-  display:flex;
-  justify-content:space-between;
-  align-items:center;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
 
-  padding:20px;
+  padding:20px;
 }
 
 .logo{
-  font-size:12px;
-  letter-spacing:3px;
-  color:#e8edf5;
+  font-size:12px;
+  letter-spacing:3px;
+  color:#e8edf5;
 }
 
 .back{
-  color:white;
-  text-decoration:none;
-  padding:10px 18px;
-  border:1px solid rgba(255,255,255,.25);
-  border-radius:25px;
-  background:rgba(0,0,0,.35);
+  color:white;
+  text-decoration:none;
+  padding:10px 18px;
+  border:1px solid rgba(255,255,255,.25);
+  border-radius:25px;
+  background:rgba(0,0,0,.35);
 }
 
 .content{
-  position:relative;
-  z-index:2;
-  width:100%;
-  max-width:1100px;
-  padding:60px;
-  padding-bottom:80px;
+  position:relative;
+  z-index:2;
+  width:100%;
+  max-width:1100px;
+  padding:60px;
+  padding-bottom:80px;
 }
 
 .tag{
-  color:#ffcf4a;
-  font-size:13px;
-  letter-spacing:5px;
-  margin-bottom:15px;
-  font-weight:bold;
+  color:#ffcf4a;
+  font-size:13px;
+  letter-spacing:5px;
+  margin-bottom:15px;
+  font-weight:bold;
 }
 
 h1{
-  font-size:clamp(55px,11vw,120px);
-  line-height:.9;
-  letter-spacing:4px;
-  margin-bottom:20px;
-  text-shadow:0 5px 30px rgba(0,0,0,.8);
+  font-size:clamp(55px,11vw,120px);
+  line-height:.9;
+  letter-spacing:4px;
+  margin-bottom:20px;
+  text-shadow:0 5px 30px rgba(0,0,0,.8);
 }
 
 .description{
-  max-width:600px;
-  color:#d2d8df;
-  font-size:17px;
-  line-height:1.7;
+  max-width:600px;
+  color:#d2d8df;
+  font-size:17px;
+  line-height:1.7;
 }
 
 .stats{
-  display:flex;
-  flex-wrap:wrap;
-  gap:12px;
-  margin-top:28px;
+  display:flex;
+  flex-wrap:wrap;
+  gap:12px;
+  margin-top:28px;
 }
 
 .stat{
-  min-width:120px;
-  padding:14px 18px;
-  border-radius:14px;
-  background:rgba(10,12,16,.65);
-  border:1px solid rgba(255,255,255,.12);
+  min-width:120px;
+  padding:14px 18px;
+  border-radius:14px;
+  background:rgba(10,12,16,.65);
+  border:1px solid rgba(255,255,255,.12);
 }
 
 .stat small{
-  display:block;
-  color:#9ba6b5;
-  font-size:10px;
-  letter-spacing:2px;
-  margin-bottom:6px;
+  display:block;
+  color:#9ba6b5;
+  font-size:10px;
+  letter-spacing:2px;
+  margin-bottom:6px;
 }
 
 .stat strong{
-  font-size:14px;
+  font-size:14px;
 }
 
 .action{
-  display:inline-block;
-  margin-top:28px;
-  padding:14px 25px;
-  border-radius:30px;
-  text-decoration:none;
-  color:white;
-  font-weight:bold;
-  background:linear-gradient(90deg,#d71920,#ffb000);
+  display:inline-block;
+  margin-top:28px;
+  padding:14px 25px;
+  border-radius:30px;
+  text-decoration:none;
+  color:white;
+  font-weight:bold;
+  background:linear-gradient(90deg,#d71920,#ffb000);
 }
 
 @media(max-width:700px){
 
-  .hero-page{
-    align-items:flex-end;
-  }
+  .hero-page{
+    align-items:flex-end;
+  }
 
-  .hero-bg{
-    background-position:center top;
-  }
+  .hero-bg{
+    background-position:center top;
+  }
 
-  .overlay{
-    background:
-      linear-gradient(
-        0deg,
-        rgba(0,0,0,.96),
-        rgba(0,0,0,.55),
-        rgba(0,0,0,.05)
-      );
-  }
+  .overlay{
+    background:
+      linear-gradient(
+        0deg,
+        rgba(0,0,0,.96),
+        rgba(0,0,0,.55),
+        rgba(0,0,0,.05)
+      );
+  }
 
-  .top{
-    padding:16px;
-  }
+  .top{
+    padding:16px;
+  }
 
-  .content{
-    padding:25px 20px 40px;
-  }
+  .content{
+    padding:25px 20px 40px;
+  }
 
-  h1{
-    font-size:58px;
-    letter-spacing:2px;
-  }
+  h1{
+    font-size:58px;
+    letter-spacing:2px;
+  }
 
-  .description{
-    font-size:15px;
-  }
+  .description{
+    font-size:15px;
+  }
 
-  .stat{
-    flex:1;
-    min-width:105px;
-  }
+  .stat{
+    flex:1;
+    min-width:105px;
+  }
 }
 </style>
 </head>
 
-  <body>
+  <body>
 
 <div class="hero-page">
 
-  <div class="hero-bg" id="heroBg"></div>
+  <div class="hero-bg" id="heroBg"></div>
 
-  <div class="overlay"></div>
+  <div class="overlay"></div>
 
-  <div class="top">
-    <div class="logo">MCU BASELINE FAN HUB</div>
+  <div class="top">
+    <div class="logo">MCU BASELINE FAN HUB</div>
 
-    <a class="back" href="index.html">
-      ← HUB
-    </a>
-  </div>
+    <a class="back" href="index.html">
+      ← HUB
+    </a>
+  </div>
 
-  <main class="content">
+  <main class="content">
 
-    <div class="tag" id="heroTag">
-      MARVEL HERO
-    </div>
-    <h1 id="heroTitle">
-  IRON<br>MAN
+    <div class="tag" id="heroTag">
+      MARVEL HERO
+    </div>
+    <h1 id="heroTitle">
+  IRON<br>MAN
 </h1>
 
 <p class="description" id="heroDescription">
-  A brilliant engineer who uses advanced technology,
-  powerful armor and courage to protect others.
+  A brilliant engineer who uses advanced technology,
+  powerful armor and courage to protect others.
 </p>
 
 <div class="stats" id="heroStats">
 
-  <div class="stat">
-    <small>POWER</small>
-    <strong id="power">TECHNOLOGY</strong>
-  </div>
+  <div class="stat">
+    <small>POWER</small>
+    <strong id="power">TECHNOLOGY</strong>
+  </div>
 
-  <div class="stat">
-    <small>ARMOR</small>
-    <strong id="armor">ADVANCED</strong>
-  </div>
+  <div class="stat">
+    <small>ARMOR</small>
+    <strong id="armor">ADVANCED</strong>
+  </div>
 
-  <div class="stat">
-    <small>STATUS</small>
-    <strong id="status">ACTIVE</strong>
-  </div>
+  <div class="stat">
+    <small>STATUS</small>
+    <strong id="status">ACTIVE</strong>
+  </div>
 
 </div>
 
 <a class="action" href="index.html">
-  ← BACK TO HEROES
+  ← BACK TO HEROES
 </a>
 
 </main>
 
 </div>
-    <script>
+    <script>
 
 const heroes = {
 
-  iron: {
-    title: "IRON<br>MAN",
-    description:
-      "A brilliant engineer who uses advanced technology, powerful armor and courage to protect others.",
-    power: "TECHNOLOGY",
-    armor: "ADVANCED",
-    status: "ACTIVE",
-    image: "HD-wallpaper-iron-man-avengers-ironman-marvel.jpg"
-  },
+  iron: {
+    title: "IRON<br>MAN",
+    description:
+      "A brilliant engineer who uses advanced technology, powerful armor and courage to protect others.",
+    power: "TECHNOLOGY",
+    armor: "ADVANCED",
+    status: "ACTIVE",
+    image: "HD-wallpaper-iron-man-avengers-ironman-marvel.jpg"
+  },
 
-  spider: {
-    title: "SPIDER<br>MAN",
-    description:
-      "A young hero known for agility, quick thinking and web-based movement.",
-    power: "AGILITY",
-    armor: "WEB GEAR",
-    status: "ACTIVE",
-    image: ""
-  },
+  spider: {
+    title: "SPIDER<br>MAN",
+    description:
+      "A young hero known for agility, quick thinking and web-based movement.",
+    power: "AGILITY",
+    armor: "WEB GEAR",
+    status: "ACTIVE",
+    image: ""
+  },
 
-  captain: {
-    title: "CAPTAIN<br>AMERICA",
-    description:
-      "A determined hero known for courage, leadership, strength and an iconic shield.",
-    power: "STRENGTH",
-    armor: "SHIELD",
-    status: "ACTIVE",
-    image: ""
-  },
+  captain: {
+    title: "CAPTAIN<br>AMERICA",
+    description:
+      "A determined hero known for courage, leadership, strength and an iconic shield.",
+    power: "STRENGTH",
+    armor: "SHIELD",
+    status: "ACTIVE",
+    image: ""
+  },
 
-  thor: {
-    title: "THOR",
-    description:
-      "A powerful warrior associated with thunder, strength and a strong sense of duty.",
-    power: "THUNDER",
-    armor: "ARMED",
-    status: "ACTIVE",
-    image: ""
-  }
+  thor: {
+    title: "THOR",
+    description:
+      "A powerful warrior associated with thunder, strength and a strong sense of duty.",
+    power: "THUNDER",
+    armor: "ARMED",
+    status: "ACTIVE",
+    image: ""
+  }
 
 };
 
@@ -318,28 +318,28 @@ const hero = heroes[heroName] || heroes.iron;
 document.getElementById("heroTitle").innerHTML = hero.title;
 
 document.getElementById("heroDescription").textContent =
-  hero.description;
+  hero.description;
 
 document.getElementById("power").textContent =
-  hero.power;
+  hero.power;
 
 document.getElementById("armor").textContent =
-  hero.armor;
+  hero.armor;
 
 document.getElementById("status").textContent =
-  hero.status;
+  hero.status;
 
 const heroBg = document.getElementById("heroBg");
 
 if (hero.image) {
 
-  heroBg.style.backgroundImage =
-    `url("${hero.image}")`;
+  heroBg.style.backgroundImage =
+    `url("${hero.image}")`;
 
 } else {
 
-  heroBg.style.backgroundImage =
-    "linear-gradient(135deg,#05070c,#111827,#020305)";
+  heroBg.style.backgroundImage =
+    "linear-gradient(135deg,#05070c,#111827,#020305)";
 
 }
 
@@ -348,5 +348,5 @@ if (hero.image) {
 </body>
 </html>
 
-    
-  
+   
+ 
