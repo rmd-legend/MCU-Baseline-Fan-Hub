@@ -4,18 +4,16 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>MCU Hero</title>
+<title>Iron Man | MCU Baseline Fan Hub</title>
 
 <style>
-
 *{
   margin:0;
   padding:0;
   box-sizing:border-box;
 }
 
-html,
-body{
+html,body{
   width:100%;
   min-height:100%;
 }
@@ -27,8 +25,6 @@ body{
   overflow-x:hidden;
 }
 
-/* MAIN HERO PAGE */
-
 .hero-page{
   position:relative;
   min-height:100vh;
@@ -38,25 +34,21 @@ body{
   overflow:hidden;
 }
 
-/* IRON MAN IMAGE */
-
+/* IRON MAN BACKGROUND */
 .hero-image{
   position:absolute;
   inset:0;
-  width:100%;
-  height:100%;
+  z-index:0;
 
-  background-image:url("./HD-wallpaper-iron-man-avengers-ironman-marvel.jpg");
+  background-image:
+    url("https://rmd-legend.github.io/MCU-Baseline-Fan-Hub/HD-wallpaper-iron-man-avengers-ironman-marvel.jpg");
 
   background-size:cover;
   background-position:center;
   background-repeat:no-repeat;
-
-  z-index:0;
 }
 
-/* DARK CINEMATIC OVERLAY */
-
+/* CINEMATIC OVERLAY */
 .overlay{
   position:absolute;
   inset:0;
@@ -65,25 +57,23 @@ body{
   background:
     linear-gradient(
       90deg,
-      rgba(0,0,0,.88),
-      rgba(0,0,0,.45),
-      rgba(0,0,0,.08)
+      rgba(0,0,0,.82),
+      rgba(0,0,0,.35),
+      rgba(0,0,0,.05)
     ),
     linear-gradient(
       0deg,
-      rgba(0,0,0,.95),
-      transparent 60%
+      rgba(0,0,0,.92),
+      transparent 65%
     );
 }
 
 /* TOP BAR */
-
 .top{
   position:absolute;
   top:0;
   left:0;
   right:0;
-
   z-index:3;
 
   display:flex;
@@ -102,26 +92,15 @@ body{
 .back{
   color:white;
   text-decoration:none;
-
   padding:10px 18px;
-
-  border:1px solid rgba(255,255,255,.25);
+  border:1px solid rgba(255,255,255,.3);
   border-radius:25px;
-
-  background:rgba(0,0,0,.35);
-
-  transition:.3s;
-}
-
-.back:hover{
-  background:rgba(255,255,255,.15);
+  background:rgba(0,0,0,.4);
 }
 
 /* CONTENT */
-
 .content{
   position:relative;
-
   z-index:2;
 
   width:100%;
@@ -131,56 +110,36 @@ body{
   padding-bottom:80px;
 }
 
-/* TAG */
-
 .tag{
   color:#ffcf4a;
-
   font-size:13px;
-
   letter-spacing:5px;
-
   margin-bottom:15px;
-
   font-weight:bold;
 }
 
-/* TITLE */
-
 h1{
   font-size:clamp(55px,11vw,120px);
-
   line-height:.9;
-
   letter-spacing:4px;
-
   margin-bottom:20px;
 
   text-shadow:
-    0 5px 30px rgba(0,0,0,.8);
+    0 5px 30px rgba(0,0,0,.9);
 }
-
-/* DESCRIPTION */
 
 .description{
   max-width:600px;
 
-  color:#d2d8df;
-
+  color:#e0e5eb;
   font-size:17px;
-
   line-height:1.7;
 }
 
-/* STATS */
-
 .stats{
   display:flex;
-
   flex-wrap:wrap;
-
   gap:12px;
-
   margin-top:28px;
 }
 
@@ -192,8 +151,7 @@ h1{
   border-radius:14px;
 
   background:rgba(10,12,16,.65);
-
-  border:1px solid rgba(255,255,255,.12);
+  border:1px solid rgba(255,255,255,.15);
 
   backdrop-filter:blur(8px);
 }
@@ -204,7 +162,6 @@ h1{
   color:#9ba6b5;
 
   font-size:10px;
-
   letter-spacing:2px;
 
   margin-bottom:6px;
@@ -213,8 +170,6 @@ h1{
 .stat strong{
   font-size:14px;
 }
-
-/* BUTTON */
 
 .action{
   display:inline-block;
@@ -226,9 +181,7 @@ h1{
   border-radius:30px;
 
   text-decoration:none;
-
   color:white;
-
   font-weight:bold;
 
   background:
@@ -237,21 +190,10 @@ h1{
       #d71920,
       #ffb000
     );
-
-  transition:.3s;
-}
-
-.action:hover{
-  transform:translateY(-3px);
 }
 
 /* MOBILE */
-
 @media(max-width:700px){
-
-  .hero-page{
-    align-items:flex-end;
-  }
 
   .hero-image{
     background-position:center top;
@@ -261,8 +203,8 @@ h1{
     background:
       linear-gradient(
         0deg,
-        rgba(0,0,0,.96),
-        rgba(0,0,0,.55),
+        rgba(0,0,0,.95),
+        rgba(0,0,0,.45),
         rgba(0,0,0,.05)
       );
   }
@@ -277,7 +219,6 @@ h1{
 
   h1{
     font-size:58px;
-
     letter-spacing:2px;
   }
 
@@ -287,12 +228,9 @@ h1{
 
   .stat{
     flex:1;
-
     min-width:105px;
   }
-
 }
-
 </style>
 </head>
 
@@ -300,13 +238,10 @@ h1{
 
 <div class="hero-page">
 
-  <!-- HERO IMAGE -->
   <div class="hero-image"></div>
 
-  <!-- DARK OVERLAY -->
   <div class="overlay"></div>
 
-  <!-- TOP BAR -->
   <div class="top">
 
     <div class="logo">
@@ -319,67 +254,39 @@ h1{
 
   </div>
 
-  <!-- HERO CONTENT -->
   <main class="content">
 
-    <div class="tag" id="heroTag">
+    <div class="tag">
       MARVEL HERO
     </div>
 
-    <h1 id="heroTitle">
+    <h1>
       IRON<br>MAN
     </h1>
 
-    <p class="description" id="heroDescription">
+    <p class="description">
       A brilliant engineer who uses advanced technology,
       powerful armor and courage to protect others.
     </p>
 
-    <!-- STATS -->
-
     <div class="stats">
 
       <div class="stat">
-
-        <small>
-          POWER
-        </small>
-
-        <strong id="power">
-          TECHNOLOGY
-        </strong>
-
+        <small>POWER</small>
+        <strong>TECHNOLOGY</strong>
       </div>
 
-
       <div class="stat">
-
-        <small>
-          ARMOR
-        </small>
-
-        <strong id="armor">
-          ADVANCED
-        </strong>
-
+        <small>ARMOR</small>
+        <strong>ADVANCED</strong>
       </div>
 
-
       <div class="stat">
-
-        <small>
-          STATUS
-        </small>
-
-        <strong id="status">
-          ACTIVE
-        </strong>
-
+        <small>STATUS</small>
+        <strong>ACTIVE</strong>
       </div>
 
     </div>
-
-    <!-- BACK BUTTON -->
 
     <a class="action" href="index.html">
       ← BACK TO HEROES
@@ -388,140 +295,6 @@ h1{
   </main>
 
 </div>
-
-
-<script>
-
-/* HERO DATA */
-
-const heroes = {
-
-  iron: {
-
-    title: "IRON<br>MAN",
-
-    description:
-      "A brilliant engineer who uses advanced technology, powerful armor and courage to protect others.",
-
-    power:
-      "TECHNOLOGY",
-
-    armor:
-      "ADVANCED",
-
-    status:
-      "ACTIVE"
-
-  },
-
-
-  spider: {
-
-    title: "SPIDER<br>MAN",
-
-    description:
-      "A young hero known for agility, quick thinking and web-based movement.",
-
-    power:
-      "AGILITY",
-
-    armor:
-      "WEB GEAR",
-
-    status:
-      "ACTIVE"
-
-  },
-
-
-  captain: {
-
-    title: "CAPTAIN<br>AMERICA",
-
-    description:
-      "A determined hero known for courage, leadership, strength and an iconic shield.",
-
-    power:
-      "STRENGTH",
-
-    armor:
-      "SHIELD",
-
-    status:
-      "ACTIVE"
-
-  },
-
-
-  thor: {
-
-    title: "THOR",
-
-    description:
-      "A powerful warrior associated with thunder, strength and a strong sense of duty.",
-
-    power:
-      "THUNDER",
-
-    armor:
-      "ARMED",
-
-    status:
-      "ACTIVE"
-
-  }
-
-};
-
-
-/* GET HERO FROM URL */
-
-const params =
-  new URLSearchParams(
-    window.location.search
-  );
-
-
-const heroName =
-  params.get("hero") || "iron";
-
-
-const hero =
-  heroes[heroName] || heroes.iron;
-
-
-/* UPDATE PAGE */
-
-document.getElementById(
-  "heroTitle"
-).innerHTML =
-  hero.title;
-
-
-document.getElementById(
-  "heroDescription"
-).textContent =
-  hero.description;
-
-
-document.getElementById(
-  "power"
-).textContent =
-  hero.power;
-
-
-document.getElementById(
-  "armor"
-).textContent =
-  hero.armor;
-
-
-document.getElementById(
-  "status"
-).textContent =
-  hero.status;
-
-</script>
 
 </body>
 </html>
