@@ -3,110 +3,265 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Hero | MCU Baseline Fan Hub</title>
+
+<title>Iron Man | MCU Baseline Fan Hub</title>
 
 <style>
 *{
-  box-sizing:border-box;
   margin:0;
   padding:0;
+  box-sizing:border-box;
+}
+
+html,body{
+  width:100%;
+  min-height:100%;
 }
 
 body{
-  min-height:100vh;
-  font-family:Arial,Helvetica,sans-serif;
+  background:#020305;
   color:white;
-  background:
-    radial-gradient(circle at top,#12365a,#05070d 55%);
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  padding:25px;
+  font-family:Arial,Helvetica,sans-serif;
   overflow-x:hidden;
 }
 
-.container{
+.hero-page{
+  position:relative;
+  min-height:100vh;
+  min-height:100svh;
+  display:flex;
+  align-items:flex-end;
+  overflow:hidden;
+}
+
+.hero-bg{
+  position:absolute;
+  inset:0;
   width:100%;
-  max-width:850px;
-  text-align:center;
-  padding:45px 25px;
-  border:1px solid rgba(0,210,255,.25);
-  border-radius:28px;
-  background:rgba(8,14,25,.85);
-  box-shadow:0 0 50px rgba(0,180,255,.12);
-  animation:appear 1s ease;
+  height:100%;
+  object-fit:cover;
+  object-position:center;
+  z-index:0;
 }
 
-.icon{
-  font-size:90px;
-  margin-bottom:20px;
-  animation:float 3s ease-in-out infinite;
+.overlay{
+  position:absolute;
+  inset:0;
+  z-index:1;
+  background:
+    linear-gradient(
+      90deg,
+      rgba(0,0,0,.88),
+      rgba(0,0,0,.45),
+      rgba(0,0,0,.08)
+    ),
+    linear-gradient(
+      0deg,
+      rgba(0,0,0,.95),
+      transparent 60%
+    );
 }
 
-.badge{
-  color:#20d5ff;
+.top{
+  position:absolute;
+  top:0;
+  left:0;
+  right:0;
+  z-index:3;
+
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+
+  padding:20px;
+}
+
+.logo{
+  font-size:12px;
   letter-spacing:3px;
-  font-size:12px;
-  margin-bottom:15px;
-}
-
-h1{
-  font-size:clamp(40px,9vw,75px);
-  letter-spacing:4px;
-  margin-bottom:20px;
-}
-
-.description{
-  color:#b8c5d5;
-  line-height:1.8;
-  max-width:650px;
-  margin:auto;
-}
-
-.info{
-  margin:30px auto;
-  display:grid;
-  grid-template-columns:repeat(auto-fit,minmax(150px,1fr));
-  gap:15px;
-}
-
-.box{
-  padding:18px;
-  border-radius:16px;
-  background:#0d1624;
-  border:1px solid rgba(255,255,255,.08);
-}
-
-.box span{
-  display:block;
-  color:#20d5ff;
-  font-size:12px;
-  margin-bottom:8px;
-  letter-spacing:1px;
+  color:#e8edf5;
 }
 
 .back{
-  display:inline-block;
-  margin-top:15px;
-  padding:13px 24px;
-  border-radius:30px;
-  background:linear-gradient(90deg,#087cff,#00d4ff);
   color:white;
   text-decoration:none;
+  padding:10px 18px;
+
+  border:1px solid rgba(255,255,255,.25);
+  border-radius:25px;
+
+  background:rgba(0,0,0,.35);
+}
+
+  .content{
+  position:relative;
+  z-index:2;
+  width:100%;
+  max-width:1100px;
+  padding:60px;
+  padding-bottom:80px;
+}
+
+.tag{
+  color:#ffcf4a;
+  font-size:13px;
+  letter-spacing:5px;
+  margin-bottom:15px;
   font-weight:bold;
 }
 
-@keyframes appear{
-  from{
-    opacity:0;
-    transform:translateY(35px) scale(.97);
-  }
-  to{
-    opacity:1;
-    transform:translateY(0) scale(1);
-  }
+h1{
+  font-size:clamp(55px,11vw,120px);
+  line-height:.9;
+  letter-spacing:4px;
+  margin-bottom:20px;
+  text-shadow:0 5px 30px rgba(0,0,0,.8);
 }
 
-@keyframes float{
-  0%,100%{transform:translateY(0)}
-  50%{transform:translateY(-10
+.description{
+  max-width:600px;
+  color:#d2d8df;
+  font-size:17px;
+  line-height:1.7;
+}
+
+.stats{
+  display:flex;
+  flex-wrap:wrap;
+  gap:12px;
+  margin-top:28px;
+}
+
+.stat{
+  min-width:120px;
+  padding:14px 18px;
+  border-radius:14px;
+  background:rgba(10,12,16,.65);
+  border:1px solid rgba(255,255,255,.12);
+}
+
+.stat small{
+  display:block;
+  color:#9ba6b5;
+  font-size:10px;
+  letter-spacing:2px;
+  margin-bottom:6px;
+}
+
+.stat strong{
+  font-size:14px;
+}
+
+.action{
+  display:inline-block;
+  margin-top:28px;
+  padding:14px 25px;
+  border-radius:30px;
+  text-decoration:none;
+  color:white;
+  font-weight:bold;
+  background:linear-gradient(90deg,#d71920,#ffb000);
+}
+
+  @media(max-width:700px){
+  .hero-page{
+    align-items:flex-end;
+  }
+
+  .hero-bg{
+    object-position:center top;
+  }
+
+  .overlay{
+    background:
+      linear-gradient(
+        0deg,
+        rgba(0,0,0,.96),
+        rgba(0,0,0,.55),
+        rgba(0,0,0,.05)
+      );
+  }
+
+  .top{
+    padding:16px;
+  }
+
+  .content{
+    padding:25px 20px 40px;
+  }
+
+  h1{
+    font-size:58px;
+    letter-spacing:2px;
+  }
+
+  .description{
+    font-size:15px;
+  }
+
+  .stat{
+    flex:1;
+    min-width:105px;
+  }
+}
+</style>
+</head>
+
+<body>
+
+<div class="hero-page">
+
+  <img
+    class="hero-bg"
+    src="HD-wallpaper-iron-man-avengers-ironman-marvel.jpg"
+    alt="Iron Man artwork"
+  >
+
+  <div class="overlay"></div>
+
+  <div class="top">
+   <div class="logo">MCU BASELINE FAN HUB</div>
+
+<a class="back" href="index.html">← HUB</a>
+</div>
+
+<main class="content">
+
+<div class="tag">MARVEL HERO</div>
+
+<h1>IRON<br>MAN</h1>
+
+<p class="description">
+A technology-driven armored hero known for engineering,
+innovation, courage and determination.
+</p>
+
+<div class="stats">
+
+<div class="stat">
+<small>POWER</small>
+<strong>TECHNOLOGY</strong>
+</div>
+
+<div class="stat">
+<small>ARMOR</small>
+<strong>ADVANCED</strong>
+</div>
+
+<div class="stat">
+<small>STATUS</small>
+<strong>ACTIVE</strong>
+</div>
+
+</div>
+
+<a class="action" href="index.html">
+← BACK TO HEROES
+</a>
+
+</main>
+
+</div>
+
+</body>
+</html>
