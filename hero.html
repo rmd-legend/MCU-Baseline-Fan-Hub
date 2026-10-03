@@ -1,14 +1,12 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
 
 <title>MCU Hero</title>
 
 <style>
-
 *{
   margin:0;
   padding:0;
@@ -24,33 +22,39 @@ body{
   background:#020305;
   color:white;
   font-family:Arial,Helvetica,sans-serif;
-  overflow-x:hidden;
-}
-
-.hero-page{
-  position:relative;
-  min-height:100vh;
-  min-height:100svh;
-  display:flex;
-  align-items:flex-end;
   overflow:hidden;
 }
 
-/* BACKGROUND IMAGE */
+/* MAIN */
+.hero-page{
+  position:relative;
+  width:100%;
+  height:100vh;
+  height:100svh;
+  overflow:hidden;
+}
+
+/* HERO IMAGE */
 .hero-image{
   position:absolute;
   inset:0;
-  width:100%;
-  height:100%;
+  z-index:0;
 
   background-size:cover;
   background-position:center;
   background-repeat:no-repeat;
 
-  z-index:0;
+  transform:scale(1.03);
+
+  animation:heroZoom 12s ease-in-out infinite alternate;
 }
 
-/* DARK EFFECT */
+@keyframes heroZoom{
+  from{transform:scale(1.03);}
+  to{transform:scale(1.09);}
+}
+
+/* DARK CINEMATIC OVERLAY */
 .overlay{
   position:absolute;
   inset:0;
@@ -59,9 +63,9 @@ body{
   background:
     linear-gradient(
       90deg,
-      rgba(0,0,0,.82),
-      rgba(0,0,0,.35),
-      rgba(0,0,0,.08)
+      rgba(0,0,0,.88),
+      rgba(0,0,0,.45),
+      rgba(0,0,0,.12)
     ),
     linear-gradient(
       0deg,
@@ -76,7 +80,8 @@ body{
   top:0;
   left:0;
   right:0;
-  z-index:3;
+
+  z-index:20;
 
   display:flex;
   justify-content:space-between;
@@ -88,151 +93,445 @@ body{
 .logo{
   font-size:12px;
   letter-spacing:3px;
+  font-weight:bold;
 }
 
 .back{
   color:white;
   text-decoration:none;
+
   padding:10px 18px;
+
   border:1px solid rgba(255,255,255,.3);
   border-radius:25px;
-  background:rgba(0,0,0,.4);
+
+  background:rgba(0,0,0,.45);
+
+  backdrop-filter:blur(10px);
 }
 
 /* CONTENT */
 .content{
-  position:relative;
-  z-index:2;
+  position:absolute;
+
+  z-index:10;
+
+  left:0;
+  bottom:0;
 
   width:100%;
-  max-width:1100px;
 
   padding:60px;
-  padding-bottom:80px;
+
+  padding-bottom:70px;
 }
 
 .tag{
-  color:#ffcf4a;
-  font-size:13px;
+  color:#20d9ff;
+
+  font-size:12px;
+
   letter-spacing:5px;
+
   margin-bottom:15px;
+
   font-weight:bold;
 }
 
 h1{
   font-size:clamp(55px,11vw,120px);
-  line-height:.9;
+
+  line-height:.88;
+
   letter-spacing:4px;
+
   margin-bottom:20px;
 
-  text-shadow:0 5px 30px rgba(0,0,0,.9);
+  text-shadow:
+    0 5px 30px #000;
+
+  animation:titleIn 1.2s ease;
 }
 
 .description{
-  max-width:600px;
-  color:#e0e5eb;
-  font-size:17px;
+  max-width:560px;
+
+  color:#dce5ee;
+
+  font-size:16px;
+
   line-height:1.7;
 }
 
 .stats{
   display:flex;
+
   flex-wrap:wrap;
-  gap:12px;
-  margin-top:28px;
+
+  gap:10px;
+
+  margin-top:25px;
 }
 
 .stat{
-  min-width:120px;
-  padding:14px 18px;
+  min-width:115px;
+
+  padding:12px 16px;
 
   border-radius:14px;
 
-  background:rgba(10,12,16,.65);
-  border:1px solid rgba(255,255,255,.15);
+  background:rgba(5,8,12,.65);
+
+  border:1px solid rgba(255,255,255,.16);
 
   backdrop-filter:blur(8px);
 }
 
 .stat small{
   display:block;
-  color:#9ba6b5;
-  font-size:10px;
+
+  color:#9ca9b8;
+
+  font-size:9px;
+
   letter-spacing:2px;
-  margin-bottom:6px;
+
+  margin-bottom:5px;
 }
 
 .stat strong{
-  font-size:14px;
+  font-size:13px;
 }
 
-.action{
-  display:inline-block;
+/* =========================
+   ENERGY EFFECT
+========================= */
 
-  margin-top:28px;
-  padding:14px 25px;
+.energy{
+  position:absolute;
 
-  border-radius:30px;
+  z-index:5;
 
-  text-decoration:none;
-  color:white;
-  font-weight:bold;
+  width:150px;
+  height:150px;
 
-  background:linear-gradient(
-    90deg,
-    #d71920,
-    #ffb000
+  border-radius:50%;
+
+  pointer-events:none;
+
+  opacity:.85;
+}
+
+/* ENERGY CORE */
+.energy::before{
+  content:"";
+
+  position:absolute;
+
+  inset:35%;
+
+  border-radius:50%;
+
+  background:white;
+
+  box-shadow:
+    0 0 15px white,
+    0 0 35px #00d9ff,
+    0 0 70px #00aaff,
+    0 0 120px #008cff;
+
+  animation:energyPulse .8s infinite alternate;
+}
+
+/* ENERGY RINGS */
+.energy::after{
+  content:"";
+
+  position:absolute;
+
+  inset:15%;
+
+  border-radius:50%;
+
+  border:2px solid rgba(0,220,255,.7);
+
+  box-shadow:
+    0 0 25px #00cfff;
+
+  animation:energyRing 1.2s linear infinite;
+}
+
+@keyframes energyPulse{
+  from{
+    transform:scale(.8);
+  }
+
+  to{
+    transform:scale(1.15);
+  }
+}
+
+@keyframes energyRing{
+  from{
+    transform:scale(.7) rotate(0deg);
+    opacity:.9;
+  }
+
+  to{
+    transform:scale(1.5) rotate(360deg);
+    opacity:0;
+  }
+}
+
+/* LIGHT RAYS */
+.rays{
+  position:absolute;
+
+  inset:0;
+
+  border-radius:50%;
+
+  background:
+    conic-gradient(
+      from 0deg,
+      transparent,
+      rgba(0,210,255,.6),
+      transparent 12%,
+      transparent 25%,
+      rgba(0,210,255,.4),
+      transparent 38%,
+      transparent 55%,
+      rgba(0,210,255,.5),
+      transparent 70%
+    );
+
+  filter:blur(2px);
+
+  animation:raySpin 2s linear infinite;
+}
+
+@keyframes raySpin{
+  to{
+    transform:rotate(360deg);
+  }
+}
+
+
+/* =========================
+   THOR LIGHTNING
+========================= */
+
+.lightning{
+  position:absolute;
+
+  width:4px;
+  height:180px;
+
+  background:white;
+
+  box-shadow:
+    0 0 10px white,
+    0 0 25px #4db8ff,
+    0 0 60px #008cff;
+
+  clip-path:polygon(
+    45% 0,
+    100% 0,
+    65% 40%,
+    100% 40%,
+    25% 100%,
+    42% 55%,
+    0 55%
   );
+
+  opacity:0;
+
+  animation:lightningFlash 2s infinite;
 }
+
+@keyframes lightningFlash{
+
+  0%,70%,100%{
+    opacity:0;
+  }
+
+  72%{
+    opacity:1;
+  }
+
+  74%{
+    opacity:.2;
+  }
+
+  76%{
+    opacity:1;
+  }
+}
+
+
+/* =========================
+   CAPTAIN SHIELD EFFECT
+========================= */
+
+.shieldGlow{
+  position:absolute;
+
+  width:190px;
+  height:190px;
+
+  border-radius:50%;
+
+  border:5px solid rgba(255,255,255,.8);
+
+  box-shadow:
+    0 0 15px white,
+    0 0 35px #4d8cff,
+    0 0 70px #006eff,
+    inset 0 0 30px #006eff;
+
+  animation:shieldPulse 1.5s infinite alternate;
+}
+
+@keyframes shieldPulse{
+  from{
+    transform:scale(.9);
+    opacity:.65;
+  }
+
+  to{
+    transform:scale(1.12);
+    opacity:1;
+  }
+}
+
+
+/* =========================
+   SPIDER WEB LIGHT
+========================= */
+
+.webGlow{
+  position:absolute;
+
+  width:300px;
+  height:300px;
+
+  border-radius:50%;
+
+  background:
+    repeating-radial-gradient(
+      circle,
+      transparent 0 20px,
+      rgba(255,255,255,.25) 21px 22px
+    );
+
+  mask-image:
+    radial-gradient(
+      circle,
+      black 0 55%,
+      transparent 75%
+    );
+
+  animation:webSpin 5s linear infinite;
+
+  opacity:.55;
+}
+
+@keyframes webSpin{
+  to{
+    transform:rotate(360deg);
+  }
+}
+
+
+/* PARTICLES */
+.particle{
+  position:absolute;
+
+  width:4px;
+  height:4px;
+
+  border-radius:50%;
+
+  background:white;
+
+  box-shadow:
+    0 0 8px white,
+    0 0 15px #00cfff;
+
+  animation:particleMove 2.5s linear infinite;
+}
+
+@keyframes particleMove{
+
+  0%{
+    transform:translateY(80px) scale(.5);
+    opacity:0;
+  }
+
+  30%{
+    opacity:1;
+  }
+
+  100%{
+    transform:translateY(-220px) scale(1.4);
+    opacity:0;
+  }
+}
+
+
+/* TITLE */
+@keyframes titleIn{
+  from{
+    opacity:0;
+    transform:translateY(40px);
+    filter:blur(10px);
+  }
+
+  to{
+    opacity:1;
+    transform:translateY(0);
+    filter:blur(0);
+  }
+}
+
 
 /* MOBILE */
 @media(max-width:700px){
 
-  .hero-image{
-    background-position:center top;
-  }
-
-  .overlay{
-    background:
-      linear-gradient(
-        0deg,
-        rgba(0,0,0,.95),
-        rgba(0,0,0,.45),
-        rgba(0,0,0,.05)
-      );
-  }
-
-  .top{
-    padding:16px;
-  }
-
   .content{
-    padding:25px 20px 40px;
+    padding:25px 20px 35px;
   }
 
   h1{
     font-size:58px;
-    letter-spacing:2px;
   }
 
   .description{
-    font-size:15px;
+    font-size:14px;
   }
 
   .stat{
-    flex:1;
-    min-width:105px;
+    min-width:100px;
+  }
+
+  .energy{
+    width:110px;
+    height:110px;
+  }
+
+  .shieldGlow{
+    width:130px;
+    height:130px;
   }
 }
-
 </style>
-
 </head>
 
 <body>
 
 <div class="hero-page">
 
+  <!-- HERO IMAGE -->
   <div
     class="hero-image"
     id="heroImage">
@@ -240,6 +539,8 @@ h1{
 
   <div class="overlay"></div>
 
+
+  <!-- TOP -->
   <div class="top">
 
     <div class="logo">
@@ -248,12 +549,53 @@ h1{
 
     <a
       class="back"
-      href="index.html">
+      href="hub.html">
+
       ← HUB
+
     </a>
 
   </div>
 
+
+  <!-- SPECIAL EFFECTS -->
+
+  <div
+    class="energy"
+    id="energy">
+
+    <div class="rays"></div>
+
+  </div>
+
+
+  <div
+    class="shieldGlow"
+    id="shieldGlow">
+  </div>
+
+
+  <div
+    class="webGlow"
+    id="webGlow">
+  </div>
+
+
+  <div
+    class="lightning"
+    id="lightning">
+  </div>
+
+
+  <!-- PARTICLES -->
+  <div class="particle p1"></div>
+  <div class="particle p2"></div>
+  <div class="particle p3"></div>
+  <div class="particle p4"></div>
+  <div class="particle p5"></div>
+
+
+  <!-- CONTENT -->
   <main class="content">
 
     <div
@@ -269,34 +611,35 @@ h1{
     <p
       class="description"
       id="heroDescription">
-      A brilliant engineer who uses advanced technology,
-      powerful armor and courage to protect others.
+      A brilliant engineer who uses advanced
+      technology and powerful armor.
     </p>
+
 
     <div class="stats">
 
       <div class="stat">
         <small>POWER</small>
-        <strong id="power">TECHNOLOGY</strong>
+        <strong id="power">
+          TECHNOLOGY
+        </strong>
       </div>
 
       <div class="stat">
         <small>ARMOR</small>
-        <strong id="armor">ADVANCED</strong>
+        <strong id="armor">
+          ADVANCED
+        </strong>
       </div>
 
       <div class="stat">
         <small>STATUS</small>
-        <strong id="status">ACTIVE</strong>
+        <strong id="status">
+          ACTIVE
+        </strong>
       </div>
 
     </div>
-
-    <a
-      class="action"
-      href="index.html">
-      ← BACK TO HEROES
-    </a>
 
   </main>
 
@@ -305,11 +648,9 @@ h1{
 
 <script>
 
-/* HERO DATA */
-
 const heroes = {
 
-  iron: {
+  iron:{
     title:"IRON<br>MAN",
 
     description:
@@ -320,11 +661,13 @@ const heroes = {
     status:"ACTIVE",
 
     image:
-      "https://rmd-legend.github.io/MCU-Baseline-Fan-Hub/HD-wallpaper-iron-man-avengers-ironman-marvel.jpg"
+      "https://rmd-legend.github.io/MCU-Baseline-Fan-Hub/HD-wallpaper-iron-man-avengers-ironman-marvel.jpg",
+
+    effect:"iron"
   },
 
 
-  spider: {
+  spider:{
     title:"SPIDER<br>MAN",
 
     description:
@@ -335,26 +678,13 @@ const heroes = {
     status:"ACTIVE",
 
     image:
-      "https://rmd-legend.github.io/MCU-Baseline-Fan-Hub/spider_man_1_1_4.jpeg"
+      "https://rmd-legend.github.io/MCU-Baseline-Fan-Hub/spider_man_1_1_4.jpeg",
+
+    effect:"spider"
   },
 
 
-  thor: {
-    title:"THOR",
-
-    description:
-      "A powerful warrior associated with thunder, strength and a strong sense of duty.",
-
-    power:"THUNDER",
-    armor:"ARMED",
-    status:"ACTIVE",
-
-    image:
-      "https://rmd-legend.github.io/MCU-Baseline-Fan-Hub/images.jpeg"
-  },
-
-
-  captain: {
+  captain:{
     title:"CAPTAIN<br>AMERICA",
 
     description:
@@ -365,13 +695,32 @@ const heroes = {
     status:"ACTIVE",
 
     image:
-      "https://rmd-legend.github.io/MCU-Baseline-Fan-Hub/images%20%281%29.jpeg"
+      "https://rmd-legend.github.io/MCU-Baseline-Fan-Hub/images%20%281%29.jpeg",
+
+    effect:"captain"
+  },
+
+
+  thor:{
+    title:"THOR",
+
+    description:
+      "A powerful warrior associated with thunder, strength and a strong sense of duty.",
+
+    power:"THUNDER",
+    armor:"HAMMER",
+    status:"ACTIVE",
+
+    image:
+      "https://rmd-legend.github.io/MCU-Baseline-Fan-Hub/images.jpeg",
+
+    effect:"thor"
   }
 
 };
 
 
-/* GET HERO FROM URL */
+/* GET HERO */
 
 const params =
   new URLSearchParams(
@@ -385,7 +734,7 @@ const hero =
   heroes[heroName] || heroes.iron;
 
 
-/* UPDATE TEXT */
+/* TEXT */
 
 document.getElementById(
   "heroTitle"
@@ -393,30 +742,131 @@ document.getElementById(
 
 document.getElementById(
   "heroDescription"
-).textContent = hero.description;
+).textContent =
+  hero.description;
 
 document.getElementById(
   "power"
-).textContent = hero.power;
+).textContent =
+  hero.power;
 
 document.getElementById(
   "armor"
-).textContent = hero.armor;
+).textContent =
+  hero.armor;
 
 document.getElementById(
   "status"
-).textContent = hero.status;
+).textContent =
+  hero.status;
 
 
-/* UPDATE IMAGE */
+/* IMAGE */
 
-const heroImage =
-  document.getElementById("heroImage");
-
-heroImage.style.backgroundImage =
+document.getElementById(
+  "heroImage"
+).style.backgroundImage =
   'url("' + hero.image + '")';
+
+
+/* EFFECT ELEMENTS */
+
+const energy =
+  document.getElementById("energy");
+
+const shield =
+  document.getElementById("shieldGlow");
+
+const web =
+  document.getElementById("webGlow");
+
+const lightning =
+  document.getElementById("lightning");
+
+
+/* HIDE ALL */
+
+energy.style.display = "none";
+shield.style.display = "none";
+web.style.display = "none";
+lightning.style.display = "none";
+
+
+/* IRON MAN */
+
+if(hero.effect === "iron"){
+
+  energy.style.display = "block";
+
+  /*
+  Change these two values if the
+  light needs to move closer to
+  Iron Man's hand.
+  */
+
+  energy.style.right = "28%";
+  energy.style.bottom = "35%";
+
+}
+
+
+/* CAPTAIN AMERICA */
+
+if(hero.effect === "captain"){
+
+  shield.style.display = "block";
+
+  shield.style.right = "27%";
+  shield.style.bottom = "37%";
+
+}
+
+
+/* SPIDER-MAN */
+
+if(hero.effect === "spider"){
+
+  web.style.display = "block";
+
+  web.style.right = "24%";
+  web.style.bottom = "34%";
+
+}
+
+
+/* THOR */
+
+if(hero.effect === "thor"){
+
+  lightning.style.display = "block";
+
+  lightning.style.right = "28%";
+  lightning.style.bottom = "30%";
+
+}
+
+
+/* RANDOM PARTICLES */
+
+const particles =
+  document.querySelectorAll(".particle");
+
+particles.forEach(
+  (particle,index)=>{
+
+    particle.style.left =
+      (20 + Math.random()*60) + "%";
+
+    particle.style.bottom =
+      (10 + Math.random()*30) + "%";
+
+    particle.style.animationDelay =
+      (Math.random()*2) + "s";
+
+  }
+);
 
 </script>
 
 </body>
-</html>
+          </html>
