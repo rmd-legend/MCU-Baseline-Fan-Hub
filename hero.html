@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Hero | MCU Baseline Fan Hub</title>
+
+<style>
+*{
+  box-sizing:border-box;
+  margin:0;
+  padding:0;
+}
+
+body{
+  min-height:100vh;
+  font-family:Arial,Helvetica,sans-serif;
+  color:white;
+  background:
+    radial-gradient(circle at top,#12365a,#05070d 55%);
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  padding:25px;
+  overflow-x:hidden;
+}
+
+.container{
+  width:100%;
+  max-width:850px;
+  text-align:center;
+  padding:45px 25px;
+  border:1px solid rgba(0,210,255,.25);
+  border-radius:28px;
+  background:rgba(8,14,25,.85);
+  box-shadow:0 0 50px rgba(0,180,255,.12);
+  animation:appear 1s ease;
+}
+
+.icon{
+  font-size:90px;
+  margin-bottom:20px;
+  animation:float 3s ease-in-out infinite;
+}
+
+.badge{
+  color:#20d5ff;
+  letter-spacing:3px;
+  font-size:12px;
+  margin-bottom:15px;
+}
+
+h1{
+  font-size:clamp(40px,9vw,75px);
+  letter-spacing:4px;
+  margin-bottom:20px;
+}
+
+.description{
+  color:#b8c5d5;
+  line-height:1.8;
+  max-width:650px;
+  margin:auto;
+}
+
+.info{
+  margin:30px auto;
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(150px,1fr));
+  gap:15px;
+}
+
+.box{
+  padding:18px;
+  border-radius:16px;
+  background:#0d1624;
+  border:1px solid rgba(255,255,255,.08);
+}
+
+.box span{
+  display:block;
+  color:#20d5ff;
+  font-size:12px;
+  margin-bottom:8px;
+  letter-spacing:1px;
+}
+
+.back{
+  display:inline-block;
+  margin-top:15px;
+  padding:13px 24px;
+  border-radius:30px;
+  background:linear-gradient(90deg,#087cff,#00d4ff);
+  color:white;
+  text-decoration:none;
+  font-weight:bold;
+}
+
+@keyframes appear{
+  from{
+    opacity:0;
+    transform:translateY(35px) scale(.97);
+  }
+  to{
+    opacity:1;
+    transform:translateY(0) scale(1);
+  }
+}
+
+@keyframes float{
+  0%,100%{transform:translateY(0)}
+  50%{transform:translateY(-10
