@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Iron Man | MCU Baseline Fan Hub</title>
+<title>MCU Hero</title>
 
 <style>
 *{
@@ -39,8 +39,9 @@ body{
   inset:0;
   width:100%;
   height:100%;
-  object-fit:cover;
-  object-position:center;
+  background-position:center;
+  background-size:cover;
+  background-repeat:no-repeat;
   z-index:0;
 }
 
@@ -86,14 +87,12 @@ body{
   color:white;
   text-decoration:none;
   padding:10px 18px;
-
   border:1px solid rgba(255,255,255,.25);
   border-radius:25px;
-
   background:rgba(0,0,0,.35);
 }
 
-  .content{
+.content{
   position:relative;
   z-index:2;
   width:100%;
@@ -163,13 +162,14 @@ h1{
   background:linear-gradient(90deg,#d71920,#ffb000);
 }
 
-  @media(max-width:700px){
+@media(max-width:700px){
+
   .hero-page{
     align-items:flex-end;
   }
 
   .hero-bg{
-    object-position:center top;
+    background-position:center top;
   }
 
   .overlay{
@@ -207,61 +207,146 @@ h1{
 </style>
 </head>
 
-<body>
+  <body>
 
 <div class="hero-page">
 
-  <img
-    class="hero-bg"
-    src="HD-wallpaper-iron-man-avengers-ironman-marvel.jpg"
-    alt="Iron Man artwork"
-  >
+  <div class="hero-bg" id="heroBg"></div>
 
   <div class="overlay"></div>
 
   <div class="top">
-   <div class="logo">MCU BASELINE FAN HUB</div>
+    <div class="logo">MCU BASELINE FAN HUB</div>
 
-<a class="back" href="index.html">← HUB</a>
-</div>
+    <a class="back" href="index.html">
+      ← HUB
+    </a>
+  </div>
 
-<main class="content">
+  <main class="content">
 
-<div class="tag">MARVEL HERO</div>
+    <div class="tag" id="heroTag">
+      MARVEL HERO
+    </div>
+    <h1 id="heroTitle">
+  IRON<br>MAN
+</h1>
 
-<h1>IRON<br>MAN</h1>
-
-<p class="description">
-A technology-driven armored hero known for engineering,
-innovation, courage and determination.
+<p class="description" id="heroDescription">
+  A brilliant engineer who uses advanced technology,
+  powerful armor and courage to protect others.
 </p>
 
-<div class="stats">
+<div class="stats" id="heroStats">
 
-<div class="stat">
-<small>POWER</small>
-<strong>TECHNOLOGY</strong>
-</div>
+  <div class="stat">
+    <small>POWER</small>
+    <strong id="power">TECHNOLOGY</strong>
+  </div>
 
-<div class="stat">
-<small>ARMOR</small>
-<strong>ADVANCED</strong>
-</div>
+  <div class="stat">
+    <small>ARMOR</small>
+    <strong id="armor">ADVANCED</strong>
+  </div>
 
-<div class="stat">
-<small>STATUS</small>
-<strong>ACTIVE</strong>
-</div>
+  <div class="stat">
+    <small>STATUS</small>
+    <strong id="status">ACTIVE</strong>
+  </div>
 
 </div>
 
 <a class="action" href="index.html">
-← BACK TO HEROES
+  ← BACK TO HEROES
 </a>
 
 </main>
 
 </div>
+    <script>
+
+const heroes = {
+
+  iron: {
+    title: "IRON<br>MAN",
+    description:
+      "A brilliant engineer who uses advanced technology, powerful armor and courage to protect others.",
+    power: "TECHNOLOGY",
+    armor: "ADVANCED",
+    status: "ACTIVE",
+    image: "HD-wallpaper-iron-man-avengers-ironman-marvel.jpg"
+  },
+
+  spider: {
+    title: "SPIDER<br>MAN",
+    description:
+      "A young hero known for agility, quick thinking and web-based movement.",
+    power: "AGILITY",
+    armor: "WEB GEAR",
+    status: "ACTIVE",
+    image: ""
+  },
+
+  captain: {
+    title: "CAPTAIN<br>AMERICA",
+    description:
+      "A determined hero known for courage, leadership, strength and an iconic shield.",
+    power: "STRENGTH",
+    armor: "SHIELD",
+    status: "ACTIVE",
+    image: ""
+  },
+
+  thor: {
+    title: "THOR",
+    description:
+      "A powerful warrior associated with thunder, strength and a strong sense of duty.",
+    power: "THUNDER",
+    armor: "ARMED",
+    status: "ACTIVE",
+    image: ""
+  }
+
+};
+
+const params = new URLSearchParams(window.location.search);
+
+const heroName = params.get("hero") || "iron";
+
+const hero = heroes[heroName] || heroes.iron;
+
+document.getElementById("heroTitle").innerHTML = hero.title;
+
+document.getElementById("heroDescription").textContent =
+  hero.description;
+
+document.getElementById("power").textContent =
+  hero.power;
+
+document.getElementById("armor").textContent =
+  hero.armor;
+
+document.getElementById("status").textContent =
+  hero.status;
+
+const heroBg = document.getElementById("heroBg");
+
+if (hero.image) {
+
+  heroBg.style.backgroundImage =
+    `url("${hero.image}")`;
+
+} else {
+
+  heroBg.style.backgroundImage =
+    "linear-gradient(135deg,#05070c,#111827,#020305)";
+
+}
+
+</script>
 
 </body>
 </html>
+
+    
+  
