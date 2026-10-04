@@ -1,0 +1,539 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Solo Movies | MCU Baseline Fan Hub</title>
+
+<style>
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+}
+
+body{
+  min-height:100vh;
+  background:
+    radial-gradient(circle at 50% 20%, rgba(120,180,255,.12), transparent 35%),
+    linear-gradient(135deg,#02030a,#080b16 50%,#020207);
+  color:white;
+  font-family:Arial,Helvetica,sans-serif;
+  overflow-x:hidden;
+}
+
+/* BACKGROUND */
+body::before{
+  content:"";
+  position:fixed;
+  inset:0;
+  background:
+    linear-gradient(115deg,transparent 45%,rgba(0,200,255,.04),transparent 55%);
+  animation:moveLight 7s linear infinite;
+  pointer-events:none;
+}
+
+@keyframes moveLight{
+  0%{transform:translateX(-30%);}
+  100%{transform:translateX(30%);}
+}
+
+/* HEADER */
+header{
+  height:72px;
+  padding:0 6%;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  position:sticky;
+  top:0;
+  z-index:10;
+  background:rgba(2,3,10,.78);
+  backdrop-filter:blur(14px);
+  border-bottom:1px solid rgba(255,255,255,.08);
+}
+
+.logo{
+  font-size:20px;
+  font-weight:900;
+  letter-spacing:2px;
+}
+
+.back{
+  color:white;
+  text-decoration:none;
+  font-size:13px;
+  font-weight:bold;
+  letter-spacing:1px;
+  padding:10px 16px;
+  border:1px solid rgba(255,255,255,.25);
+  border-radius:30px;
+  transition:.3s;
+}
+
+.back:hover{
+  background:white;
+  color:black;
+}
+
+/* MAIN */
+main{
+  width:min(1200px,90%);
+  margin:auto;
+  padding:55px 0 80px;
+}
+
+.top{
+  text-align:center;
+  margin-bottom:45px;
+}
+
+.tag{
+  color:#64d9ff;
+  font-size:12px;
+  font-weight:bold;
+  letter-spacing:4px;
+  margin-bottom:12px;
+}
+
+h1{
+  font-size:clamp(34px,7vw,70px);
+  line-height:1;
+  letter-spacing:2px;
+}
+
+.subtitle{
+  margin-top:14px;
+  color:#9ba3b5;
+  font-size:14px;
+}
+
+/* HERO TITLE */
+.heroName{
+  margin-top:28px;
+  text-align:center;
+  font-size:20px;
+  font-weight:bold;
+  letter-spacing:3px;
+}
+
+/* MOVIE GRID */
+.movieGrid{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:25px;
+  margin-top:30px;
+}
+
+.movie{
+  position:relative;
+  min-height:330px;
+  overflow:hidden;
+  border-radius:18px;
+  background:#090b14;
+  border:1px solid rgba(255,255,255,.1);
+  transition:.4s;
+  box-shadow:0 15px 50px rgba(0,0,0,.35);
+}
+
+.movie:hover{
+  transform:translateY(-8px) scale(1.02);
+  border-color:rgba(100,217,255,.5);
+  box-shadow:0 20px 60px rgba(0,150,255,.15);
+}
+
+.movie img{
+  width:100%;
+  height:330px;
+  object-fit:cover;
+  display:block;
+  transition:.5s;
+}
+
+.movie:hover img{
+  transform:scale(1.06);
+}
+
+.movie::after{
+  content:"";
+  position:absolute;
+  inset:0;
+  background:linear-gradient(
+    to top,
+    rgba(0,0,0,.95),
+    rgba(0,0,0,.25) 55%,
+    transparent
+  );
+}
+
+.info{
+  position:absolute;
+  left:20px;
+  right:20px;
+  bottom:18px;
+  z-index:2;
+}
+
+.number{
+  color:#64d9ff;
+  font-size:11px;
+  font-weight:bold;
+  letter-spacing:2px;
+}
+
+.title{
+  font-size:21px;
+  font-weight:900;
+  margin-top:5px;
+}
+
+.year{
+  color:#b7becd;
+  font-size:13px;
+  margin-top:5px;
+}
+
+/* EMPTY / ERROR */
+.message{
+  text-align:center;
+  margin:70px auto;
+  color:#9ba3b5;
+  line-height:1.7;
+}
+
+.hidden{
+  display:none;
+}
+
+/* MOBILE */
+@media(max-width:850px){
+  .movieGrid{
+    grid-template-columns:repeat(2,1fr);
+  }
+}
+
+@media(max-width:550px){
+  header{
+    height:64px;
+    padding:0 5%;
+  }
+
+  .logo{
+    font-size:15px;
+  }
+
+  .back{
+    font-size:11px;
+    padding:8px 12px;
+  }
+
+  main{
+    width:92%;
+    padding-top:38px;
+  }
+
+  .movieGrid{
+    grid-template-columns:1fr;
+    gap:20px;
+  }
+
+  .movie,
+  .movie img{
+    min-height:390px;
+    height:390px;
+  }
+}
+</style>
+</head>
+
+<body>
+
+<header>
+  <div class="logo">MCU BASELINE</div>
+  <a href="hub.html" class="back">← HEROES</a>
+</header>
+
+<main>
+
+  <section class="top">
+    <div class="tag">MARVEL FAN PROJECT</div>
+    <h1>SOLO MOVIES</h1>
+    <p class="subtitle">
+      Explore movies focused on this hero
+    </p>
+    <div class="heroName" id="heroName">LOADING...</div>
+  </section>
+
+  <section id="movieGrid" class="movieGrid"></section>
+
+  <div id="message" class="message hidden"></div>
+
+</main>
+
+<script>
+
+/* =========================
+   MOVIE DATABASE
+========================= */
+
+const movies = {
+
+  iron: {
+    name:"IRON MAN",
+    items:[
+      ["Iron Man","2008","iron-man-1.jpg"],
+      ["Iron Man 2","2010","iron-man-2.jpg"],
+      ["Iron Man 3","2013","iron-man-3.jpg"]
+    ]
+  },
+
+  spider: {
+    name:"SPIDER-MAN",
+    items:[
+      ["Spider-Man: Homecoming","2017","spider-man-homecoming.jpg"],
+      ["Spider-Man: Far From Home","2019","spider-man-far-from-home.jpg"],
+      ["Spider-Man: No Way Home","2021","spider-man-no-way-home.jpg"]
+    ]
+  },
+
+  captain: {
+    name:"CAPTAIN AMERICA",
+    items:[
+      ["Captain America: The First Avenger","2011","captain-america-1.jpg"],
+      ["Captain America: The Winter Soldier","2014","captain-america-2.jpg"],
+      ["Captain America: Civil War","2016","captain-america-3.jpg"]
+    ]
+  },
+
+  thor: {
+    name:"THOR",
+    items:[
+      ["Thor","2011","thor-1.jpg"],
+      ["Thor: The Dark World","2013","thor-2.jpg"],
+      ["Thor: Ragnarok","2017","thor-3.jpg"],
+      ["Thor: Love and Thunder","2022","thor-4.jpg"]
+    ]
+  },
+
+  hulk: {
+    name:"HULK",
+    items:[
+      ["The Incredible Hulk","2008","hulk-movie.jpg"]
+    ]
+  },
+
+  blackwidow: {
+    name:"BLACK WIDOW",
+    items:[
+      ["Black Widow","2021","black-widow-movie.jpg"]
+    ]
+  },
+
+  strange: {
+    name:"DOCTOR STRANGE",
+    items:[
+      ["Doctor Strange","2016","doctor-strange-1.jpg"],
+      ["Doctor Strange in the Multiverse of Madness","2022","doctor-strange-2.jpg"]
+    ]
+  },
+
+  shehulk: {
+    name:"SHE-HULK",
+    items:[
+      ["She-Hulk: Attorney at Law","2022","she-hulk-movie.jpg"]
+    ]
+  },
+
+  panther: {
+    name:"BLACK PANTHER",
+    items:[
+      ["Black Panther","2018","black-panther-1.jpg"],
+      ["Black Panther: Wakanda Forever","2022","black-panther-2.jpg"]
+    ]
+  },
+
+  loki: {
+    name:"LOKI",
+    items:[
+      ["Loki","2021","loki-movie.jpg"]
+    ]
+  },
+
+  wanda: {
+    name:"WANDA / SCARLET WITCH",
+    items:[
+      ["WandaVision","2021","wandavision.jpg"]
+    ]
+  },
+
+  noir: {
+    name:"SPIDER-NOIR",
+    items:[
+      ["Spider-Noir","2026","spider-noir-movie.jpg"]
+    ]
+  },
+
+  deadpool: {
+    name:"DEADPOOL",
+    items:[
+      ["Deadpool","2016","deadpool-1.jpg"],
+      ["Deadpool 2","2018","deadpool-2.jpg"],
+      ["Deadpool & Wolverine","2024","deadpool-wolverine.jpg"]
+    ]
+  },
+
+  wolverine: {
+    name:"WOLVERINE",
+    items:[
+      ["X-Men Origins: Wolverine","2009","wolverine-1.jpg"],
+      ["The Wolverine","2013","wolverine-2.jpg"],
+      ["Logan","2017","wolverine-3.jpg"]
+    ]
+  },
+
+  antman: {
+    name:"ANT-MAN",
+    items:[
+      ["Ant-Man","2015","ant-man-1.jpg"],
+      ["Ant-Man and the Wasp","2018","ant-man-2.jpg"],
+      ["Ant-Man and the Wasp: Quantumania","2023","ant-man-3.jpg"]
+    ]
+  },
+
+  wasp: {
+    name:"WASP",
+    items:[
+      ["Ant-Man and the Wasp","2018","wasp-1.jpg"]
+    ]
+  },
+
+  falcon: {
+    name:"FALCON / SAM WILSON",
+    items:[
+      ["Captain America: Brave New World","2025","captain-america-brave-new-world.jpg"]
+    ]
+  },
+
+  winter: {
+    name:"WINTER SOLDIER",
+    items:[
+      ["Captain America: The Winter Soldier","2014","winter-soldier-movie.jpg"]
+    ]
+  },
+
+  shangchi: {
+    name:"SHANG-CHI",
+    items:[
+      ["Shang-Chi and the Legend of the Ten Rings","2021","shang-chi-movie.jpg"]
+    ]
+  },
+
+  hawkeye: {
+    name:"HAWKEYE",
+    items:[
+      ["Hawkeye","2021","hawkeye-movie.jpg"]
+    ]
+  },
+
+  ghostrider: {
+    name:"GHOST RIDER",
+    items:[
+      ["Ghost Rider","2007","ghost-rider-1.jpg"],
+      ["Ghost Rider: Spirit of Vengeance","2011","ghost-rider-2.jpg"]
+    ]
+  },
+
+  blade: {
+    name:"BLADE",
+    items:[
+      ["Blade","1998","blade-1.jpg"],
+      ["Blade II","2002","blade-2.jpg"],
+      ["Blade: Trinity","2004","blade-3.jpg"]
+    ]
+  },
+
+  daredevil: {
+    name:"DAREDEVIL",
+    items:[
+      ["Daredevil","2003","daredevil-movie.jpg"]
+    ]
+  },
+
+  moonknight: {
+    name:"MOON KNIGHT",
+    items:[
+      ["Moon Knight","2022","moon-knight-movie.jpg"]
+    ]
+  }
+
+};
+
+
+/* =========================
+   READ HERO FROM URL
+========================= */
+
+const params = new URLSearchParams(window.location.search);
+const hero = params.get("hero");
+
+const heroName = document.getElementById("heroName");
+const movieGrid = document.getElementById("movieGrid");
+const message = document.getElementById("message");
+
+if(!hero || !movies[hero]){
+
+  heroName.textContent = "HERO NOT FOUND";
+
+  message.classList.remove("hidden");
+
+  message.innerHTML = `
+    The selected hero could not be found.<br>
+    Please return to the Heroes page and try again.
+  `;
+
+}else{
+
+  const data = movies[hero];
+
+  heroName.textContent = data.name;
+
+  data.items.forEach((movie,index)=>{
+
+    const card = document.createElement("article");
+
+    card.className = "movie";
+
+    card.innerHTML = `
+      <img
+        src="${movie[2]}"
+        alt="${movie[0]}"
+        onerror="this.style.display='none'"
+      >
+
+      <div class="info">
+
+        <div class="number">
+          MOVIE ${String(index+1).padStart(2,"0")}
+        </div>
+
+        <div class="title">
+          ${movie[0]}
+        </div>
+
+        <div class="year">
+          ${movie[1]}
+        </div>
+
+      </div>
+    `;
+
+    movieGrid.appendChild(card);
+
+  });
+
+}
+
+</script>
+
+</body>
+</html>
