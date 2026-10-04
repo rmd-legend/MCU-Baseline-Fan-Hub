@@ -7,15 +7,14 @@
 <title>MCU Baseline Fan Hub</title>
 
 <style>
-
 *{
     margin:0;
     padding:0;
     box-sizing:border-box;
 }
 
-html,body{
-    min-height:100%;
+html{
+    scroll-behavior:smooth;
 }
 
 body{
@@ -25,72 +24,71 @@ body{
     overflow-x:hidden;
 }
 
-.page{
-    min-height:100vh;
-    padding:25px;
-    position:relative;
-    overflow:hidden;
-}
-
 /* BACKGROUND */
 
-.page::before{
+body::before{
     content:"";
-    position:absolute;
-    width:600px;
-    height:600px;
+    position:fixed;
+    width:700px;
+    height:700px;
     border-radius:50%;
     background:radial-gradient(
         circle,
-        rgba(0,200,255,.15),
+        rgba(0,210,255,.12),
         transparent 70%
     );
-    top:-200px;
-    right:-150px;
-    animation:move 8s ease-in-out infinite alternate;
-}
-
-@keyframes move{
-    from{transform:translate(0,0);}
-    to{transform:translate(-150px,150px);}
+    top:-300px;
+    right:-250px;
+    pointer-events:none;
 }
 
 /* HEADER */
 
 .header{
-    position:relative;
-    z-index:2;
+    position:sticky;
+    top:0;
+    z-index:50;
 
     display:flex;
     justify-content:space-between;
     align-items:center;
 
-    max-width:1200px;
-    margin:auto;
+    padding:18px 30px;
+
+    background:rgba(2,4,10,.75);
+    backdrop-filter:blur(15px);
+
+    border-bottom:1px solid rgba(255,255,255,.1);
 }
 
 .logo{
-    font-size:12px;
+    font-size:13px;
     letter-spacing:3px;
+    font-weight:bold;
 }
 
 .home{
     color:white;
     text-decoration:none;
-    padding:10px 18px;
+
+    padding:9px 18px;
+
     border:1px solid rgba(255,255,255,.25);
     border-radius:25px;
+
+    transition:.3s;
 }
 
-/* TITLE */
+.home:hover{
+    border-color:#20d9ff;
+    box-shadow:0 0 20px rgba(32,217,255,.3);
+}
+
+/* HERO TITLE */
 
 .hero-title{
-    position:relative;
-    z-index:2;
-
     text-align:center;
-
-    padding-top:90px;
+    padding:80px 20px 50px;
 }
 
 .hero-title small{
@@ -99,9 +97,9 @@ body{
 }
 
 .hero-title h1{
-    font-size:clamp(45px,9vw,90px);
-    margin-top:15px;
+    font-size:clamp(42px,8vw,85px);
     letter-spacing:4px;
+    margin-top:15px;
 }
 
 .hero-title p{
@@ -109,84 +107,85 @@ body{
     margin-top:15px;
 }
 
+/* SECTION */
+
+.section{
+    max-width:1250px;
+    margin:auto;
+    padding:30px 25px 80px;
+}
+
+.section-title{
+    display:flex;
+    align-items:center;
+    gap:15px;
+
+    margin-bottom:25px;
+
+    font-size:14px;
+    letter-spacing:4px;
+    color:#20d9ff;
+}
+
+.section-title::after{
+    content:"";
+    height:1px;
+    flex:1;
+    background:linear-gradient(
+        90deg,
+        rgba(32,217,255,.5),
+        transparent
+    );
+}
+
 /* CARDS */
 
 .cards{
-    position:relative;
-    z-index:2;
-
-    max-width:1200px;
-    margin:55px auto;
-
     display:grid;
-    grid-template-columns:
-        repeat(4,1fr);
-
+    grid-template-columns:repeat(4,1fr);
     gap:20px;
 }
 
 .card{
     position:relative;
 
-    min-height:360px;
+    height:360px;
 
     border-radius:22px;
-
     overflow:hidden;
 
-    border:1px solid rgba(255,255,255,.15);
-
     background:#090d14;
+
+    border:1px solid rgba(255,255,255,.14);
 
     text-decoration:none;
     color:white;
 
-    transition:.4s;
+    transition:.45s;
 
-    animation:cardIn .8s ease both;
-}
-
-.card:nth-child(2){
-    animation-delay:.1s;
-}
-
-.card:nth-child(3){
-    animation-delay:.2s;
-}
-
-.card:nth-child(4){
-    animation-delay:.3s;
-}
-
-@keyframes cardIn{
-    from{
-        opacity:0;
-        transform:translateY(40px);
-    }
-    to{
-        opacity:1;
-        transform:translateY(0);
-    }
+    animation:cardIn .7s ease both;
 }
 
 .card:hover{
-    transform:translateY(-10px) scale(1.02);
+    transform:translateY(-10px) scale(1.025);
 
     border-color:#20d9ff;
 
     box-shadow:
-        0 0 35px rgba(0,210,255,.25);
+        0 0 35px rgba(0,210,255,.25),
+        0 20px 60px rgba(0,0,0,.5);
 }
 
 .card img{
-    width:100%;
-    height:100%;
-    object-fit:cover;
-
     position:absolute;
     inset:0;
 
-    transition:.5s;
+    width:100%;
+    height:100%;
+
+    object-fit:cover;
+
+    transition:.6s;
 }
 
 .card:hover img{
@@ -201,51 +200,85 @@ body{
 
     background:
         linear-gradient(
-            transparent 25%,
-            rgba(0,0,0,.9)
+            transparent 20%,
+            rgba(0,0,0,.9) 100%
         );
 }
 
 .card-info{
     position:absolute;
 
-    z-index:2;
-
     left:20px;
     right:20px;
     bottom:20px;
-}
 
-.card-info h2{
-    font-size:25px;
-    margin-bottom:8px;
+    z-index:3;
 }
 
 .card-info span{
     color:#20d9ff;
-    font-size:11px;
-    letter-spacing:2px;
+    font-size:10px;
+    letter-spacing:3px;
+}
+
+.card-info h2{
+    font-size:24px;
+    margin-top:7px;
+}
+
+.card-info p{
+    color:#aeb8c7;
+    font-size:12px;
+    margin-top:5px;
+}
+
+@keyframes cardIn{
+
+    from{
+        opacity:0;
+        transform:translateY(40px);
+    }
+
+    to{
+        opacity:1;
+        transform:translateY(0);
+    }
+}
+
+/* TEAM */
+
+.team{
+    margin-top:30px;
 }
 
 /* MOBILE */
 
-@media(max-width:850px){
+@media(max-width:950px){
 
     .cards{
-        grid-template-columns:
-            repeat(2,1fr);
+        grid-template-columns:repeat(2,1fr);
     }
 
 }
 
-@media(max-width:520px){
+@media(max-width:550px){
 
-    .page{
-        padding:18px;
+    .header{
+        padding:15px 18px;
+    }
+
+    .logo{
+        font-size:10px;
+        letter-spacing:2px;
     }
 
     .hero-title{
-        padding-top:70px;
+        padding-top:60px;
+    }
+
+    .section{
+        padding-left:16px;
+        padding-right:16px;
     }
 
     .cards{
@@ -253,150 +286,647 @@ body{
     }
 
     .card{
-        min-height:320px;
+        height:390px;
     }
 
 }
-
 </style>
 </head>
 
 <body>
 
-<div class="page">
+<header class="header">
 
-    <header class="header">
+    <div class="logo">
+        MCU BASELINE FAN HUB
+    </div>
 
-        <div class="logo">
-            MCU BASELINE FAN HUB
-        </div>
+    <a href="index.html" class="home">
+        ← HOME
+    </a>
 
-        <a
-            href="index.html"
-            class="home">
-
-            ← HOME
-
-        </a>
-
-    </header>
+</header>
 
 
-    <section class="hero-title">
+<section class="hero-title">
 
-        <small>
-            EXPLORE THE UNIVERSE
-        </small>
+    <small>EXPLORE THE UNIVERSE</small>
 
-        <h1>
-            FEATURED HEROES
-        </h1>
+    <h1>FEATURED HEROES</h1>
 
-        <p>
-            Enter the world of your favourite heroes.
-        </p>
+    <p>
+        Explore heroes, abilities, stories and movies.
+    </p>
 
-    </section>
+</section>
 
 
-    <section class="cards">
+<!-- =========================
+     SOLO HEROES
+========================= -->
+
+<section class="section">
+
+    <div class="section-title">
+        SOLO HEROES
+    </div>
+
+    <div class="cards">
 
 
-        <a
-            class="card"
-            href="hero.html?hero=iron">
+        <!-- IRON MAN -->
+
+        <a class="card" href="hero.html?hero=iron">
 
             <img
                 src="HD-wallpaper-iron-man-avengers-ironman-marvel.jpg"
-                alt="Iron Man">
+                alt="Iron Man"
+            >
 
             <div class="card-info">
 
-                <span>
-                    HERO 01
-                </span>
+                <span>HERO 01</span>
 
-                <h2>
-                    IRON MAN
-                </h2>
+                <h2>IRON MAN</h2>
+
+                <p>Genius • Engineer • Avenger</p>
 
             </div>
 
         </a>
 
 
-        <a
-            class="card"
-            href="hero.html?hero=spider">
+        <!-- SPIDER-MAN -->
+
+        <a class="card" href="hero.html?hero=spider">
 
             <img
                 src="spider_man_1_1_4.jpeg"
-                alt="Spider-Man">
+                alt="Spider-Man"
+            >
 
             <div class="card-info">
 
-                <span>
-                    HERO 02
-                </span>
+                <span>HERO 02</span>
 
-                <h2>
-                    SPIDER-MAN
-                </h2>
+                <h2>SPIDER-MAN</h2>
+
+                <p>Web-Slinger • Hero</p>
 
             </div>
 
         </a>
 
 
-        <a
-            class="card"
-            href="hero.html?hero=captain">
+        <!-- CAPTAIN AMERICA -->
+
+        <a class="card" href="hero.html?hero=captain">
 
             <img
-                src="images (1).jpeg"
-                alt="Captain America">
+                src="images%20%281%29.jpeg"
+                alt="Captain America"
+            >
 
             <div class="card-info">
 
-                <span>
-                    HERO 03
-                </span>
+                <span>HERO 03</span>
 
-                <h2>
-                    CAPTAIN AMERICA
-                </h2>
+                <h2>CAPTAIN AMERICA</h2>
+
+                <p>Super Soldier • Avenger</p>
 
             </div>
 
         </a>
 
 
-        <a
-            class="card"
-            href="hero.html?hero=thor">
+        <!-- THOR -->
+
+        <a class="card" href="hero.html?hero=thor">
 
             <img
                 src="images.jpeg"
-                alt="Thor">
+                alt="Thor"
+            >
 
             <div class="card-info">
 
-                <span>
-                    HERO 04
-                </span>
+                <span>HERO 04</span>
 
-                <h2>
-                    THOR
-                </h2>
+                <h2>THOR</h2>
+
+                <p>God of Thunder • Avenger</p>
 
             </div>
 
         </a>
 
 
-    </section>
+        <!-- HULK -->
 
-</div>
+        <a class="card" href="hero.html?hero=hulk">
+
+            <img
+                src="hulk.jpg"
+                alt="Hulk"
+            >
+
+            <div class="card-info">
+
+                <span>HERO 05</span>
+
+                <h2>HULK</h2>
+
+                <p>Gamma Power • Avenger</p>
+
+            </div>
+
+        </a>
+
+
+        <!-- BLACK WIDOW -->
+
+        <a class="card" href="hero.html?hero=blackwidow">
+
+            <img
+                src="black-widow.jpg"
+                alt="Black Widow"
+            >
+
+            <div class="card-info">
+
+                <span>HERO 06</span>
+
+                <h2>BLACK WIDOW</h2>
+
+                <p>Spy • Avenger</p>
+
+            </div>
+
+        </a>
+
+
+        <!-- DOCTOR STRANGE -->
+
+        <a class="card" href="hero.html?hero=strange">
+
+            <img
+                src="doctor-strange.jpg"
+                alt="Doctor Strange"
+            >
+
+            <div class="card-info">
+
+                <span>HERO 07</span>
+
+                <h2>DOCTOR STRANGE</h2>
+
+                <p>Sorcerer • Mystic Arts</p>
+
+            </div>
+
+        </a>
+
+
+        <!-- SHE HULK -->
+
+        <a class="card" href="hero.html?hero=shehulk">
+
+            <img
+                src="she-hulk.jpg"
+                alt="She-Hulk"
+            >
+
+            <div class="card-info">
+
+                <span>HERO 08</span>
+
+                <h2>SHE-HULK</h2>
+
+                <p>Gamma Power • Lawyer</p>
+
+            </div>
+
+        </a>
+
+
+        <!-- BLACK PANTHER -->
+
+        <a class="card" href="hero.html?hero=panther">
+
+            <img
+                src="black-panther.jpg"
+                alt="Black Panther"
+            >
+
+            <div class="card-info">
+
+                <span>HERO 09</span>
+
+                <h2>BLACK PANTHER</h2>
+
+                <p>Wakanda • Warrior</p>
+
+            </div>
+
+        </a>
+
+
+        <!-- LOKI -->
+
+        <a class="card" href="hero.html?hero=loki">
+
+            <img
+                src="loki.jpg"
+                alt="Loki"
+            >
+
+            <div class="card-info">
+
+                <span>HERO 10</span>
+
+                <h2>LOKI</h2>
+
+                <p>God of Mischief • Magic</p>
+
+            </div>
+
+        </a>
+
+
+        <!-- WANDA -->
+
+        <a class="card" href="hero.html?hero=wanda">
+
+            <img
+                src="wanda.jpg"
+                alt="Wanda"
+            >
+
+            <div class="card-info">
+
+                <span>HERO 11</span>
+
+                <h2>SCARLET WITCH</h2>
+
+                <p>Chaos Magic • Reality</p>
+
+            </div>
+
+        </a>
+
+
+        <!-- SPIDER NOIR -->
+
+        <a class="card" href="hero.html?hero=noir">
+
+            <img
+                src="spider-noir.jpg"
+                alt="Spider Noir"
+            >
+
+            <div class="card-info">
+
+                <span>HERO 12</span>
+
+                <h2>SPIDER-NOIR</h2>
+
+                <p>Spider Hero</p>
+
+            </div>
+
+        </a>
+
+
+        <!-- DEADPOOL -->
+
+        <a class="card" href="hero.html?hero=deadpool">
+
+            <img
+                src="deadpool.jpg"
+                alt="Deadpool"
+            >
+
+            <div class="card-info">
+
+                <span>HERO 13</span>
+
+                <h2>DEADPOOL</h2>
+
+                <p>Regeneration • Mercenary</p>
+
+            </div>
+
+        </a>
+
+
+        <!-- WOLVERINE -->
+
+        <a class="card" href="hero.html?hero=wolverine">
+
+            <img
+                src="wolverine.jpg"
+                alt="Wolverine"
+            >
+
+            <div class="card-info">
+
+                <span>HERO 14</span>
+
+                <h2>WOLVERINE</h2>
+
+                <p>Mutant • Claws</p>
+
+            </div>
+
+        </a>
+
+
+        <!-- ANT MAN -->
+
+        <a class="card" href="hero.html?hero=antman">
+
+            <img
+                src="ant-man.jpg"
+                alt="Ant-Man"
+            >
+
+            <div class="card-info">
+
+                <span>HERO 15</span>
+
+                <h2>ANT-MAN</h2>
+
+                <p>Size Manipulation</p>
+
+            </div>
+
+        </a>
+
+
+        <!-- WASP -->
+
+        <a class="card" href="hero.html?hero=wasp">
+
+            <img
+                src="wasp.jpg"
+                alt="Wasp"
+            >
+
+            <div class="card-info">
+
+                <span>HERO 16</span>
+
+                <h2>WASP</h2>
+
+                <p>Flight • Energy Blasts</p>
+
+            </div>
+
+        </a>
+
+
+        <!-- FALCON -->
+
+        <a class="card" href="hero.html?hero=falcon">
+
+            <img
+                src="falcon.jpg"
+                alt="Falcon"
+            >
+
+            <div class="card-info">
+
+                <span>HERO 17</span>
+
+                <h2>FALCON</h2>
+
+                <p>Flight • Wings</p>
+
+            </div>
+
+        </a>
+
+
+        <!-- WINTER SOLDIER -->
+
+        <a class="card" href="hero.html?hero=winter">
+
+            <img
+                src="winter-soldier.jpg"
+                alt="Winter Soldier"
+            >
+
+            <div class="card-info">
+
+                <span>HERO 18</span>
+
+                <h2>WINTER SOLDIER</h2>
+
+                <p>Super Soldier • Combat</p>
+
+            </div>
+
+        </a>
+
+
+        <!-- SHANG CHI -->
+
+        <a class="card" href="hero.html?hero=shangchi">
+
+            <img
+                src="shang-chi.jpg"
+                alt="Shang Chi"
+            >
+
+            <div class="card-info">
+
+                <span>HERO 19</span>
+
+                <h2>SHANG-CHI</h2>
+
+                <p>Martial Arts • Ten Rings</p>
+
+            </div>
+
+        </a>
+
+
+        <!-- HAWKEYE -->
+
+        <a class="card" href="hero.html?hero=hawkeye">
+
+            <img
+                src="hawkeye.jpg"
+                alt="Hawkeye"
+            >
+
+            <div class="card-info">
+
+                <span>HERO 20</span>
+
+                <h2>HAWKEYE</h2>
+
+                <p>Archer • Avenger</p>
+
+            </div>
+
+        </a>
+
+
+        <!-- GHOST RIDER -->
+
+        <a class="card" href="hero.html?hero=ghostrider">
+
+            <img
+                src="ghost-rider.jpg"
+                alt="Ghost Rider"
+            >
+
+            <div class="card-info">
+
+                <span>HERO 21</span>
+
+                <h2>GHOST RIDER</h2>
+
+                <p>Spirit • Fire</p>
+
+            </div>
+
+        </a>
+
+
+        <!-- BLADE -->
+
+        <a class="card" href="hero.html?hero=blade">
+
+            <img
+                src="blade.jpg"
+                alt="Blade"
+            >
+
+            <div class="card-info">
+
+                <span>HERO 22</span>
+
+                <h2>BLADE</h2>
+
+                <p>Vampire Hunter</p>
+
+            </div>
+
+        </a>
+
+
+        <!-- DAREDEVIL -->
+
+        <a class="card" href="hero.html?hero=daredevil">
+
+            <img
+                src="daredevil.jpg"
+                alt="Daredevil"
+            >
+
+            <div class="card-info">
+
+                <span>HERO 23</span>
+
+                <h2>DAREDEVIL</h2>
+
+                <p>Enhanced Senses • Fighter</p>
+
+            </div>
+
+        </a>
+
+
+        <!-- MOON KNIGHT -->
+
+        <a class="card" href="hero.html?hero=moonknight">
+
+            <img
+                src="moon-knight.jpg"
+                alt="Moon Knight"
+            >
+
+            <div class="card-info">
+
+                <span>HERO 24</span>
+
+                <h2>MOON KNIGHT</h2>
+
+                <p>Moon Warrior</p>
+
+            </div>
+
+        </a>
+
+    </div>
+
+</section>
+
+
+<!-- =========================
+     TEAMS
+========================= -->
+
+<section class="section team">
+
+    <div class="section-title">
+        TEAMS & UNIVERSES
+    </div>
+
+    <div class="cards">
+
+
+        <!-- X MEN -->
+
+        <a class="card" href="hero.html?hero=xmen">
+
+            <img
+                src="x-men.jpg"
+                alt="X-Men"
+            >
+
+            <div class="card-info">
+
+                <span>TEAM 01</span>
+
+                <h2>X-MEN</h2>
+
+                <p>Mutant Team</p>
+
+            </div>
+
+        </a>
+
+
+        <!-- THUNDERBOLTS -->
+
+        <a class="card" href="hero.html?hero=thunderbolts">
+
+            <img
+                src="thunderbolts.jpg"
+                alt="Thunderbolts"
+            >
+
+            <div class="card-info">
+
+                <span>TEAM 02</span>
+
+                <h2>THUNDERBOLTS</h2>
+
+                <p>Team</p>
+
+            </div>
+
+        </a>
+
+
+    </div>
+
+</section>
+
 
 </body>
-      </html>
+    </html>
