@@ -3,1106 +3,171 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Hero | MCU Baseline Fan Hub</title>
+<title>MCU Baseline | Hero Profile</title>
 
 <style>
-*{
-    margin:0;
-    padding:0;
-    box-sizing:border-box;
-}
-
-html,body{
-    width:100%;
-    min-height:100%;
-}
-
+*{box-sizing:border-box}
 body{
-    background:#020307;
-    color:white;
-    font-family:Arial,Helvetica,sans-serif;
-    overflow-x:hidden;
+ margin:0;background:#05070d;color:white;
+ font-family:Arial,Helvetica,sans-serif;
+ min-height:100vh;overflow-x:hidden
 }
-
-/* HERO IMAGE */
 .hero-bg{
-    position:fixed;
-    inset:0;
-    z-index:0;
-
-    background-size:contain;
-    background-position:center center;
-    background-repeat:no-repeat;
-
-    background-color:#020307;
-
-    filter:brightness(.48);
-    transform:scale(1);
+ position:fixed;inset:0;
+ background-position:center;background-size:cover;
+ background-repeat:no-repeat;
+ filter:brightness(.28);z-index:-2;
+ transition:background-image .4s
 }
-
-/* DARK OVERLAY */
-.hero-bg::after{
-    content:"";
-    position:absolute;
-    inset:0;
-
-    background:
-        linear-gradient(
-            90deg,
-            rgba(0,0,0,.88) 0%,
-            rgba(0,0,0,.55) 42%,
-            rgba(0,0,0,.18) 100%
-        ),
-        linear-gradient(
-            0deg,
-            rgba(0,0,0,.85),
-            transparent 65%
-        );
+.overlay{
+ position:fixed;inset:0;
+ background:linear-gradient(90deg,#03050af5,#03050a8c,#03050aee);
+ z-index:-1
 }
-
-/* LIGHT */
-.light{
-    position:fixed;
-    width:500px;
-    height:500px;
-
-    border-radius:50%;
-
-    background:rgba(0,180,255,.08);
-
-    filter:blur(80px);
-
-    top:-200px;
-    right:-150px;
-
-    z-index:1;
-
-    animation:pulse 4s infinite alternate;
-}
-
-@keyframes pulse{
-    from{
-        transform:scale(1);
-    }
-
-    to{
-        transform:scale(1.25);
-    }
-}
-
-/* HEADER */
 header{
-    position:relative;
-    z-index:10;
-
-    height:72px;
-
-    display:flex;
-    align-items:center;
-    justify-content:space-between;
-
-    padding:0 6%;
-
-    background:rgba(0,0,0,.4);
-
-    border-bottom:1px solid rgba(255,255,255,.1);
-
-    backdrop-filter:blur(12px);
+ display:flex;justify-content:space-between;align-items:center;
+ padding:18px 6%;border-bottom:1px solid #ffffff22;
+ background:#05070dbb
 }
-
-.logo{
-    font-size:18px;
-    font-weight:900;
-    letter-spacing:2px;
-}
-
+.brand{font-size:17px;font-weight:900;letter-spacing:2px;color:#ff3030}
+a{color:white;text-decoration:none}
 .back{
-    color:white;
-    text-decoration:none;
-
-    padding:10px 18px;
-
-    border:1px solid rgba(255,255,255,.3);
-
-    border-radius:30px;
-
-    font-size:12px;
-    font-weight:bold;
-    letter-spacing:1px;
-
-    transition:.3s;
+ border:1px solid #ffffff55;padding:10px 15px;
+ border-radius:8px;font-size:13px
 }
-
-.back:hover{
-    background:white;
-    color:black;
+main{
+ width:min(1100px,90%);margin:0 auto;
+ min-height:80vh;display:flex;align-items:center;padding:45px 0
 }
-
-/* CONTENT */
-.content{
-    position:relative;
-    z-index:5;
-
-    min-height:calc(100vh - 72px);
-
-    display:flex;
-    align-items:center;
-
-    padding:60px 8%;
-}
-
-.info{
-    width:min(650px,100%);
-}
-
-.tag{
-    color:#67dfff;
-
-    font-size:12px;
-    font-weight:bold;
-
-    letter-spacing:4px;
-
-    margin-bottom:18px;
-}
-
-h1{
-    font-size:clamp(48px,9vw,100px);
-
-    line-height:.9;
-
-    letter-spacing:-3px;
-
-    margin-bottom:22px;
-
-    text-shadow:0 0 35px rgba(255,255,255,.15);
-}
-
-.description{
-    color:#d0d5df;
-
-    font-size:16px;
-
-    line-height:1.7;
-
-    max-width:600px;
-
-    margin-bottom:25px;
-}
-
-.abilities{
-    display:flex;
-    flex-wrap:wrap;
-
-    gap:9px;
-
-    margin-bottom:32px;
-}
-
-.ability{
-    padding:9px 14px;
-
-    border-radius:20px;
-
-    background:rgba(255,255,255,.08);
-
-    border:1px solid rgba(255,255,255,.14);
-
-    color:#dce2ec;
-
-    font-size:12px;
-}
-
-/* MOVIES BUTTON */
-.movies{
-    display:inline-flex;
-
-    align-items:center;
-
-    gap:12px;
-
-    padding:15px 23px;
-
-    border-radius:30px;
-
-    background:white;
-
-    color:black;
-
-    text-decoration:none;
-
-    font-weight:900;
-
-    font-size:13px;
-
-    letter-spacing:1px;
-
-    transition:.3s;
-}
-
-.movies:hover{
-    transform:translateY(-3px);
-
-    box-shadow:
-        0 10px 35px rgba(255,255,255,.25);
-}
-
-/* POWER EFFECT */
+.content{max-width:680px}
+.tag{color:#ff4242;letter-spacing:4px;font-size:12px;font-weight:bold}
+h1{font-size:clamp(42px,9vw,90px);margin:14px 0;text-transform:uppercase}
+.desc{font-size:17px;line-height:1.7;color:#d0d4df}
+h3{letter-spacing:2px;color:#ff4242}
+.powers{display:flex;flex-wrap:wrap;gap:10px;margin:20px 0}
 .power{
-    position:fixed;
-
-    z-index:3;
-
-    pointer-events:none;
+ border:1px solid #ffffff38;background:#ffffff0b;
+ border-radius:20px;padding:9px 13px;font-size:13px
 }
-
-.hidden{
-    display:none;
+.btn{
+ display:inline-block;background:#e62429;padding:14px 22px;
+ border-radius:8px;font-weight:bold;margin:12px 8px 0 0
 }
-
-/* IRON MAN */
-.repulsor{
-    width:170px;
-    height:170px;
-
-    border-radius:50%;
-
-    border:3px solid rgba(80,210,255,.7);
-
-    box-shadow:
-        0 0 20px #5edcff,
-        0 0 70px rgba(50,180,255,.7),
-        inset 0 0 40px rgba(50,200,255,.5);
-
-    right:12%;
-    bottom:22%;
-
-    animation:repulse 1.2s infinite alternate;
-}
-
-.repulsor::after{
-    content:"";
-
-    position:absolute;
-
-    width:35px;
-    height:35px;
-
-    border-radius:50%;
-
-    background:white;
-
-    box-shadow:
-        0 0 20px #5edcff,
-        0 0 60px #39cfff;
-
-    top:50%;
-    left:50%;
-
-    transform:translate(-50%,-50%);
-}
-
-@keyframes repulse{
-    from{
-        transform:scale(.8);
-        opacity:.55;
-    }
-
-    to{
-        transform:scale(1.15);
-        opacity:1;
-    }
-}
-
-/* SPIDER */
-.web{
-    width:230px;
-    height:230px;
-
-    right:10%;
-    bottom:18%;
-
-    border-radius:50%;
-
-    background:
-        repeating-radial-gradient(
-            circle,
-            transparent 0 22px,
-            rgba(255,255,255,.8) 23px 25px
-        );
-
-    opacity:.5;
-
-    animation:spin 5s linear infinite;
-}
-
-@keyframes spin{
-    to{
-        transform:rotate(360deg);
-    }
-}
-
-/* CAPTAIN */
-.shield{
-    width:170px;
-    height:170px;
-
-    right:12%;
-    bottom:20%;
-
-    border-radius:50%;
-
-    border:15px solid #dce4ed;
-
-    box-shadow:
-        0 0 0 15px #b8202b,
-        0 0 0 30px #dce4ed,
-        0 0 45px rgba(255,255,255,.5);
-
-    animation:shieldSpin 4s linear infinite;
-}
-
-.shield::after{
-    content:"★";
-
-    position:absolute;
-
-    inset:0;
-
-    display:flex;
-
-    align-items:center;
-    justify-content:center;
-
-    color:white;
-
-    font-size:55px;
-}
-
-@keyframes shieldSpin{
-    to{
-        transform:rotate(360deg);
-    }
-}
-
-/* THOR */
-.lightning{
-    width:8px;
-    height:300px;
-
-    right:22%;
-    top:25%;
-
-    background:#bdefff;
-
-    box-shadow:
-        0 0 20px #65dfff,
-        0 0 60px #2bbfff;
-
-    transform:rotate(18deg);
-
-    animation:flash .8s infinite;
-}
-
-@keyframes flash{
-    0%,100%{
-        opacity:.1;
-    }
-
-    20%{
-        opacity:1;
-    }
-
-    30%{
-        opacity:.2;
-    }
-
-    50%{
-        opacity:.9;
-    }
-}
-
-/* HULK */
-.hulkPower{
-    width:260px;
-    height:260px;
-
-    right:8%;
-    bottom:15%;
-
-    border-radius:50%;
-
-    background:rgba(70,255,90,.12);
-
-    box-shadow:
-        0 0 100px rgba(60,255,80,.45);
-
-    animation:hulkPulse 1.3s infinite alternate;
-}
-
-@keyframes hulkPulse{
-    from{
-        transform:scale(.8);
-    }
-
-    to{
-        transform:scale(1.2);
-    }
-}
-
-/* DOCTOR STRANGE */
-.magic{
-    width:210px;
-    height:210px;
-
-    right:9%;
-    bottom:17%;
-
-    border:5px solid #ff8b28;
-
-    border-radius:50%;
-
-    box-shadow:
-        0 0 20px #ff8b28,
-        0 0 60px rgba(255,90,20,.6);
-
-    animation:magicSpin 3s linear infinite;
-}
-
-.magic::before,
-.magic::after{
-    content:"";
-
-    position:absolute;
-
-    inset:20px;
-
-    border:2px solid #ffca55;
-
-    border-radius:50%;
-}
-
-.magic::after{
-    inset:45px;
-}
-
-@keyframes magicSpin{
-    to{
-        transform:rotate(360deg);
-    }
-}
-
-/* WANDA */
-.wanda{
-    width:260px;
-    height:260px;
-
-    right:8%;
-    bottom:12%;
-
-    border-radius:50%;
-
-    background:
-        radial-gradient(
-            circle,
-            rgba(255,20,90,.7),
-            rgba(180,0,60,.2),
-            transparent 70%
-        );
-
-    filter:blur(4px);
-
-    animation:wandaPower 1s infinite alternate;
-}
-
-@keyframes wandaPower{
-    from{
-        transform:scale(.7);
-    }
-
-    to{
-        transform:scale(1.3);
-    }
-}
-
-/* LOKI */
-.loki{
-    width:230px;
-    height:230px;
-
-    right:10%;
-    bottom:15%;
-
-    border-radius:50%;
-
-    border:4px solid #40ff9a;
-
-    box-shadow:
-        0 0 25px #40ff9a,
-        0 0 80px rgba(0,255,100,.5);
-
-    animation:magicSpin 5s linear infinite reverse;
-}
-
-/* MOBILE */
-@media(max-width:700px){
-
-    .hero-bg{
-        background-size:contain;
-        background-position:center center;
-    }
-
-    header{
-        height:64px;
-        padding:0 5%;
-    }
-
-    .logo{
-        font-size:14px;
-    }
-
-    .back{
-        font-size:10px;
-        padding:8px 13px;
-    }
-
-    .content{
-        min-height:calc(100vh - 64px);
-
-        padding:50px 7%;
-
-        align-items:flex-start;
-
-        padding-top:80px;
-    }
-
-    h1{
-        font-size:58px;
-        letter-spacing:-2px;
-    }
-
-    .description{
-        font-size:14px;
-    }
-
-    .power{
-        right:-30px;
-        bottom:8%;
-        opacity:.45;
-    }
-
-    .repulsor,
-    .shield{
-        width:130px;
-        height:130px;
-    }
-
-    .magic,
-    .loki,
-    .web,
-    .hulkPower,
-    .wanda{
-        width:180px;
-        height:180px;
-    }
+.secondary{background:#ffffff12;border:1px solid #ffffff40}
+.status{color:#aeb5c6;font-size:13px;margin-top:24px}
+@media(max-width:600px){
+ header{padding:16px 5%}
+ main{width:90%;padding:35px 0}
+ .desc{font-size:15px}
 }
 </style>
 </head>
-
 <body>
 
 <div class="hero-bg" id="heroBg"></div>
-
-<div class="light"></div>
+<div class="overlay"></div>
 
 <header>
-
-    <div class="logo">
-        MCU BASELINE
-    </div>
-
-    <a href="hub.html" class="back">
-        ← BACK
-    </a>
-
+ <div class="brand">MCU BASELINE</div>
+ <a class="back" href="hub.html">← BACK TO HUB</a>
 </header>
 
-<main class="content">
-
-    <section class="info">
-
-        <div class="tag">
-            MARVEL FAN PROJECT
-        </div>
-
-        <h1 id="heroName">
-            HERO
-        </h1>
-
-        <p class="description" id="heroDescription">
-            Loading hero information...
-        </p>
-
-        <div class="abilities" id="abilities"></div>
-
-        <a href="#" class="movies" id="moviesButton">
-            VIEW SOLO MOVIES →
-        </a>
-
-    </section>
-
+<main>
+ <section class="content">
+  <div class="tag">MARVEL HERO DATABASE</div>
+  <h1 id="heroName">LOADING...</h1>
+  <p class="desc" id="heroDescription">Loading hero information...</p>
+  <h3>ABILITIES</h3>
+  <div class="powers" id="heroPowers"></div>
+  <a class="btn" id="moviesButton" href="movies.html">EXPLORE MOVIES</a>
+  <a class="btn secondary" href="hub.html">ALL HEROES</a>
+  <p class="status" id="status">MCU BASELINE • HERO PROFILE</p>
+ </section>
 </main>
 
-
-<!-- POWER EFFECTS -->
-
-<div id="ironEffect"
-     class="power repulsor hidden"></div>
-
-<div id="spiderEffect"
-     class="power web hidden"></div>
-
-<div id="capEffect"
-     class="power shield hidden"></div>
-
-<div id="thorEffect"
-     class="power lightning hidden"></div>
-
-<div id="hulkEffect"
-     class="power hulkPower hidden"></div>
-
-<div id="strangeEffect"
-     class="power magic hidden"></div>
-
-<div id="wandaEffect"
-     class="power wanda hidden"></div>
-
-<div id="lokiEffect"
-     class="power loki hidden"></div>
-
-
 <script>
-
-/* HERO DATABASE */
-
 const heroes = {
-
-    iron:{
-        name:"IRON MAN",
-        image:"HD-wallpaper-iron-man-avengers-ironman-marvel.jpg",
-        description:"Genius inventor Tony Stark uses advanced armor technology to become one of the MCU's most iconic heroes.",
-        abilities:[
-            "Genius Intelligence",
-            "Powered Armor",
-            "Repulsor Technology",
-            "Flight"
-        ],
-        effect:"ironEffect"
-    },
-
-    spider:{
-        name:"SPIDER-MAN",
-        image:"spider_man_1_1_4.jpeg",
-        description:"Peter Parker uses his spider abilities, agility and web technology to protect people while balancing life as a young hero.",
-        abilities:[
-            "Spider-Sense",
-            "Super Strength",
-            "Wall Crawling",
-            "Web Shooters"
-        ],
-        effect:"spiderEffect"
-    },
-
-    captain:{
-        name:"CAPTAIN AMERICA",
-        image:"images%20%281%29.jpeg",
-        description:"A super-soldier known for courage, leadership and an unbreakable commitment to doing what is right.",
-        abilities:[
-            "Super Soldier",
-            "Shield Combat",
-            "Leadership",
-            "Enhanced Strength"
-        ],
-        effect:"capEffect"
-    },
-
-    thor:{
-        name:"THOR",
-        image:"images.jpeg",
-        description:"Thor is the Asgardian God of Thunder, wielding immense power and command over lightning.",
-        abilities:[
-            "Thunder",
-            "Lightning",
-            "Asgardian Strength",
-            "Mjolnir"
-        ],
-        effect:"thorEffect"
-    },
-
-    hulk:{
-        name:"HULK",
-        image:"hulk.jpg",
-        description:"Bruce Banner transforms into the incredibly powerful Hulk, gaining tremendous strength and durability.",
-        abilities:[
-            "Super Strength",
-            "Durability",
-            "Regeneration",
-            "Hulk Transformation"
-        ],
-        effect:"hulkEffect"
-    },
-
-    blackwidow:{
-        name:"BLACK WIDOW",
-        image:"black-widow.jpg",
-        description:"Natasha Romanoff is a highly trained spy and master combatant with exceptional tactical skills.",
-        abilities:[
-            "Martial Arts",
-            "Espionage",
-            "Acrobatics",
-            "Tactical Skills"
-        ],
-        effect:null
-    },
-
-    strange:{
-        name:"DOCTOR STRANGE",
-        image:"doctor-strange.jpg",
-        description:"Doctor Strange protects reality using powerful mystical abilities and knowledge of the mystic arts.",
-        abilities:[
-            "Magic",
-            "Portals",
-            "Astral Projection",
-            "Mystic Arts"
-        ],
-        effect:"strangeEffect"
-    },
-
-    shehulk:{
-        name:"SHE-HULK",
-        image:"she-hulk.jpg",
-        description:"Jennifer Walters balances her legal career with the extraordinary strength and abilities of She-Hulk.",
-        abilities:[
-            "Super Strength",
-            "Durability",
-            "Healing",
-            "Combat"
-        ],
-        effect:"hulkEffect"
-    },
-
-    panther:{
-        name:"BLACK PANTHER",
-        image:"black-panther.jpg",
-        description:"The Black Panther protects Wakanda with enhanced abilities, advanced technology and exceptional combat skills.",
-        abilities:[
-            "Enhanced Strength",
-            "Vibranium Suit",
-            "Agility",
-            "Combat"
-        ],
-        effect:null
-    },
-
-    loki:{
-        name:"LOKI",
-        image:"loki.jpg",
-        description:"Loki is a master of magic and illusion whose journey takes him far beyond the role of a simple trickster.",
-        abilities:[
-            "Illusions",
-            "Magic",
-            "Teleportation",
-            "Shapeshifting"
-        ],
-        effect:"lokiEffect"
-    },
-
-    wanda:{
-        name:"WANDA / SCARLET WITCH",
-        image:"wanda.jpg",
-        description:"Wanda Maximoff possesses extraordinary reality-altering powers and powerful mystical abilities.",
-        abilities:[
-            "Chaos Magic",
-            "Telekinesis",
-            "Reality Manipulation",
-            "Energy Projection"
-        ],
-        effect:"wandaEffect"
-    },
-
-    noir:{
-        name:"SPIDER-NOIR",
-        image:"spider-noir.jpg",
-        description:"A darker Spider-Man variant operating from a mysterious alternate universe.",
-        abilities:[
-            "Spider-Sense",
-            "Agility",
-            "Webs",
-            "Combat"
-        ],
-        effect:"spiderEffect"
-    },
-
-    deadpool:{
-        name:"DEADPOOL",
-        image:"deadpool.jpg",
-        description:"A highly skilled antihero known for exceptional combat abilities and accelerated healing.",
-        abilities:[
-            "Healing",
-            "Sword Combat",
-            "Agility",
-            "Combat"
-        ],
-        effect:null
-    },
-
-    wolverine:{
-        name:"WOLVERINE",
-        image:"wolverine.jpg",
-        description:"Wolverine is a powerful mutant with enhanced healing, senses and retractable claws.",
-        abilities:[
-            "Healing",
-            "Adamantium Claws",
-            "Enhanced Senses",
-            "Strength"
-        ],
-        effect:null
-    },
-
-    antman:{
-        name:"ANT-MAN",
-        image:"ant-man.jpg",
-        description:"Ant-Man uses advanced technology to change his size while retaining remarkable strength.",
-        abilities:[
-            "Size Manipulation",
-            "Strength",
-            "Pym Technology",
-            "Combat"
-        ],
-        effect:null
-    },
-
-    wasp:{
-        name:"WASP",
-        image:"wasp.jpg",
-        description:"Wasp combines advanced shrinking technology, flight and energy-based attacks.",
-        abilities:[
-            "Flight",
-            "Size Manipulation",
-            "Energy Blasts",
-            "Combat"
-        ],
-        effect:null
-    },
-
-    falcon:{
-        name:"FALCON / SAM WILSON",
-        image:"falcon.jpg",
-        description:"Sam Wilson uses advanced flight technology and exceptional combat skills to fight as a hero.",
-        abilities:[
-            "Flight",
-            "Wings",
-            "Combat",
-            "Tactical Skills"
-        ],
-        effect:null
-    },
-
-    winter:{
-        name:"WINTER SOLDIER",
-        image:"winter-soldier.jpg",
-        description:"Bucky Barnes is a highly trained super-soldier with extensive combat experience.",
-        abilities:[
-            "Super Soldier",
-            "Cybernetic Arm",
-            "Combat",
-            "Weapons"
-        ],
-        effect:null
-    },
-
-    shangchi:{
-        name:"SHANG-CHI",
-        image:"shang-chi.jpg",
-        description:"Shang-Chi is an exceptional martial artist who can wield powerful mystical weapons.",
-        abilities:[
-            "Martial Arts",
-            "Ten Rings",
-            "Agility",
-            "Combat"
-        ],
-        effect:null
-    },
-
-    hawkeye:{
-        name:"HAWKEYE",
-        image:"hawkeye.jpg",
-        description:"Clint Barton is an elite archer with extraordinary accuracy and combat skills.",
-        abilities:[
-            "Archery",
-            "Accuracy",
-            "Combat",
-            "Tactics"
-        ],
-        effect:null
-    },
-
-    ghostrider:{
-        name:"GHOST RIDER",
-        image:"ghost-rider.jpg",
-        description:"Ghost Rider is a supernatural hero empowered by mystical fire and extraordinary abilities.",
-        abilities:[
-            "Hellfire",
-            "Supernatural Strength",
-            "Healing",
-            "Chain Combat"
-        ],
-        effect:null
-    },
-
-    blade:{
-        name:"BLADE",
-        image:"blade.jpg",
-        description:"Blade is a skilled supernatural hunter with enhanced physical abilities.",
-        abilities:[
-            "Strength",
-            "Speed",
-            "Combat",
-            "Weapons"
-        ],
-        effect:null
-    },
-
-    daredevil:{
-        name:"DAREDEVIL",
-        image:"daredevil.jpg",
-        description:"Daredevil uses heightened senses and exceptional martial arts skills to protect his city.",
-        abilities:[
-            "Enhanced Senses",
-            "Martial Arts",
-            "Agility",
-            "Radar Sense"
-        ],
-        effect:null
-    },
-
-    moonknight:{
-        name:"MOON KNIGHT",
-        image:"moon-knight.jpg",
-        description:"Moon Knight is a mysterious vigilante with exceptional combat abilities and supernatural connections.",
-        abilities:[
-            "Combat",
-            "Agility",
-            "Weapons",
-            "Enhanced Abilities"
-        ],
-        effect:null
-    },
-
-    xmen:{
-        name:"X-MEN",
-        image:"x-men.jpg",
-        description:"A team of powerful mutants united to protect people and defend their world.",
-        abilities:[
-            "Mutant Powers",
-            "Teamwork",
-            "Combat",
-            "Strategy"
-        ],
-        effect:null
-    },
-
-    thunderbolts:{
-        name:"THUNDERBOLTS",
-        image:"thunderbolts.jpg",
-        description:"A team assembled from powerful and unconventional characters.",
-        abilities:[
-            "Teamwork",
-            "Combat",
-            "Tactics",
-            "Special Abilities"
-        ],
-        effect:null
-    }
-
+ iron: {
+  name:"Iron Man", image:"iron-man.jpg",
+  desc:"Genius inventor Tony Stark uses advanced armor and technology to protect the world.",
+  powers:["Powered Armor","Repulsor Technology","Flight","Genius Inventor"]
+ },
+ spider: {
+  name:"Spider-Man", image:"spider-man.jpg",
+  desc:"A young hero with spider-like abilities who protects people with courage and responsibility.",
+  powers:["Web Shooting","Spider-Sense","Wall Crawling","Agility"]
+ },
+ captain: {
+  name:"Captain America", image:"captain-america.jpg",
+  desc:"A super-soldier known for his courage, leadership and iconic shield.",
+  powers:["Vibranium Shield","Super Soldier","Leadership","Combat"]
+ },
+ thor: {
+  name:"Thor", image:"thor.jpg",
+  desc:"The Asgardian God of Thunder commands lightning and wields mighty weapons.",
+  powers:["Lightning","Super Strength","Storm Control","Mjolnir"]
+ },
+ hulk: {
+  name:"Hulk", image:"hulk.jpg",
+  desc:"Bruce Banner transforms into a powerful hero with extraordinary strength.",
+  powers:["Super Strength","Durability","Powerful Leaps","Gamma Power"]
+ },
+ blackwidow: {
+  name:"Black Widow", image:"black-widow.jpg",
+  desc:"A highly skilled spy and fighter who uses strategy, stealth and precision.",
+  powers:["Espionage","Martial Arts","Tactical Skills","Stealth"]
+ },
+ shehulk: {
+  name:"She-Hulk", image:"she-hulk.jpg",
+  desc:"Jennifer Walters balances her legal career with extraordinary gamma-powered abilities.",
+  powers:["Super Strength","Durability","Combat","Gamma Power"]
+ },
+ strange: {
+  name:"Doctor Strange", image:"doctor-strange.jpg",
+  desc:"A master of the mystic arts who protects reality from supernatural threats.",
+  powers:["Mystic Arts","Portals","Energy Shields","Magic"]
+ },
+ panther: {
+  name:"Black Panther", image:"black-panther.jpg",
+  desc:"The protector of Wakanda combines advanced technology with exceptional combat skills.",
+  powers:["Vibranium Suit","Agility","Combat","Wakandan Technology"]
+ },
+ wanda: {
+  name:"Scarlet Witch", image:"wanda.jpg",
+  desc:"Wanda Maximoff wields powerful chaos magic and reality-altering abilities.",
+  powers:["Chaos Magic","Telekinesis","Energy Projection","Reality Magic"]
+ },
+ loki: {
+  name:"Loki", image:"loki.jpg",
+  desc:"The God of Mischief uses magic, illusions and clever strategy.",
+  powers:["Illusions","Sorcery","Shapeshifting","Trickery"]
+ }
 };
 
+const params = new URLSearchParams(window.location.search);
+const key = params.get("hero") || "iron";
+const hero = heroes[key];
 
-/* GET HERO */
-
-const params =
-    new URLSearchParams(window.location.search);
-
-const heroKey =
-    params.get("hero");
-
-
-/* ELEMENTS */
-
-const heroName =
-    document.getElementById("heroName");
-
-const heroDescription =
-    document.getElementById("heroDescription");
-
-const heroBg =
-    document.getElementById("heroBg");
-
-const abilities =
-    document.getElementById("abilities");
-
-const moviesButton =
-    document.getElementById("moviesButton");
-
-
-/* LOAD HERO */
-
-if(heroKey && heroes[heroKey]){
-
-    const hero =
-        heroes[heroKey];
-
-    heroName.textContent =
-        hero.name;
-
-    heroDescription.textContent =
-        hero.description;
-
-    heroBg.style.backgroundImage =
-        "url('" + hero.image + "')";
-
-    abilities.innerHTML = "";
-
-    hero.abilities.forEach(function(item){
-
-        const ability =
-            document.createElement("div");
-
-        ability.className =
-            "ability";
-
-        ability.textContent =
-            item;
-
-        abilities.appendChild(
-            ability
-        );
-
-    });
-
-    moviesButton.href =
-        "movies.html?hero=" +
-        encodeURIComponent(heroKey);
-
-    if(hero.effect){
-
-        const effect =
-            document.getElementById(
-                hero.effect
-            );
-
-        if(effect){
-
-            effect.classList.remove(
-                "hidden"
-            );
+if (hero) {
+ document.title = hero.name + " | MCU Baseline";
+ document.getElementById("heroName").textContent = hero.name;
+ document.getElementById("heroDescription").textContent = hero.desc;
+ document.getElementById("heroPowers").innerHTML =
+  hero.powers.map(power => `<span class="power">${power}</span>`).join("");
+ document.getElementById("heroBg").style.backgroundImage =
+  `url("${hero.image}")`;
+ document.getElementById("moviesButton").href =
+  `movies.html?hero=${encodeURIComponent(key)}`;
+ document.getElementById("status").textContent =
+  "PROFILE LOADED • " + hero.name.toUpperCase();
+} else {
+ document.getElementById("heroName").textContent = "HERO NOT FOUND";
+ document.getElementById("heroDescription").textContent =
+  "Return to the hub and select a valid hero.";
+ document.getElementById("heroPowers").innerHTML = "";
+ document.getElementById("status").textContent =
+  "Unknown hero key: " + key;
+}
+</script>
+</body>
+</html>
